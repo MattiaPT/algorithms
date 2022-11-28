@@ -24,8 +24,3 @@ hs_err_pid*
 
 # generated java classes
 *.class
-
-# eclipse
-*.gitignore
-*.project
-*.classpath
