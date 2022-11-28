@@ -3,6 +3,7 @@ and playing around with Algorithms learnt in the *algorithms & datastructures* l
 
 ## Sorting Algorithms
 - Bubblesort
+- Selectionsort
 - (in progress)
 
 ## Search Algorithms
