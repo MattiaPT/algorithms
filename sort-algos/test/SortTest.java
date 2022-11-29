@@ -42,12 +42,10 @@ public class SortTest {
 	public void testInsertionsort() {
 		Sorter s = new Sorter(new int[] {124, 643, 1234, 34, 2, 4, 0, 12});
 		s.insertionsort();
-		System.out.println(s);
 		assertEquals(true, s.isSorted());
 		
 		s.arr = new int[] {12, 53, 2, 3, 5, 5, 2, 1, 2, 9};
 		s.insertionsort();
-		System.out.println(s);
 		assertEquals(true, s.isSorted());
 	}
 }
