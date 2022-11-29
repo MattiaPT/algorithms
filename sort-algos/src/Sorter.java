@@ -45,22 +45,19 @@ public class Sorter {
 	
 	/* INSERTION SORT */
 	public void insertionsort() {
-		for (int i = 0; i < this.arr.length; i++) {
+		for (int i = 1; i < this.arr.length; i++) {
 			// binary search location of i in arr[0..i-1]
-			int left = 0, right = i, middle = 0;
-			while (left < right) {
+			int left = 0, right = i-1, middle = 0;
+			while (left <= right) {
 				middle = (left + right)/2;
-				if (this.arr[i] == this.arr[middle])
-					break;
-				else if (this.arr[i] < this.arr[middle])
+				if (this.arr[i] < this.arr[middle])
 					right = middle - 1;
 				else
 					left = middle + 1;
 			}
-			for (int j = i; j > middle; j--) {
+			for (int j = i; j > left; j--) {
 				swap(j, j-1);
 			}
-			System.out.println(Arrays.toString(this.arr));
 		}
 	}
 	
