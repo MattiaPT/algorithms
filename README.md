@@ -5,6 +5,7 @@ and playing around with algorithms learnt in the *algorithms & datastructures* l
 - Bubble Sort
 - Selection Sort
 - Insertion Sort
+- Heap Sort
 - (in progress)
 
 ## Search Algorithms

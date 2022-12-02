@@ -19,33 +19,45 @@ public class SortTest {
 	@Test
 	public void testBubblesort() {
 		Sorter s = new Sorter(new int[] {124, 643, 1234, 34, 2, 4, 0, 12});
-		s.bubblesort();
+		s.bubbleSort();
 		assertEquals(true, s.isSorted());
 		
 		s.arr = new int[] {12, 53, 2, 3, 5, 5, 2, 1, 2, 9};
-		s.bubblesort();
+		s.bubbleSort();
 		assertEquals(true, s.isSorted());
 	}
 	
 	@Test
 	public void testSelectionsort() {
 		Sorter s = new Sorter(new int[] {124, 643, 1234, 34, 2, 4, 0, 12});
-		s.selectionsort();
+		s.selectionSort();
 		assertEquals(true, s.isSorted());
 		
 		s.arr = new int[] {12, 53, 2, 3, 5, 5, 2, 1, 2, 9};
-		s.selectionsort();
+		s.selectionSort();
 		assertEquals(true, s.isSorted());
 	}
 	
 	@Test
 	public void testInsertionsort() {
 		Sorter s = new Sorter(new int[] {124, 643, 1234, 34, 2, 4, 0, 12});
-		s.insertionsort();
+		s.insertionSort();
 		assertEquals(true, s.isSorted());
 		
 		s.arr = new int[] {12, 53, 2, 3, 5, 5, 2, 1, 2, 9};
-		s.insertionsort();
+		s.insertionSort();
+		assertEquals(true, s.isSorted());
+	}
+	
+
+	@Test
+	public void testHeapSort() {
+		Sorter s = new Sorter(new int[] {124, 643, 1234, 34, 2, 4, 0, 12});
+		s.heapSort();
+		assertEquals(true, s.isSorted());
+		
+		s.arr = new int[] {12, 53, 2, 3, 5, 5, 2, 1, 2, 9};
+		s.heapSort();
 		assertEquals(true, s.isSorted());
 	}
 }
