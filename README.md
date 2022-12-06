@@ -10,4 +10,5 @@ and playing around with algorithms learnt in the *algorithms & datastructures* l
 - Quick Sort
 
 ## Search Algorithms
-- (in progress)
+- DFS: Test Reachability, (in progress)
+- BFS: (in progress)
