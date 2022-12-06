@@ -120,6 +120,31 @@ public class Sorter {
 			this.arr[i] = B[i-left];
 	}
 	
+	/* QUICK SORT */
+	public void quickSort() {
+		quickSort(0, this.arr.length - 1);
+	}
+	public void quickSort(int left, int right) {
+		if (left < right) {
+			int k = getK(left, right);
+			quickSort(left, k - 1);
+			quickSort(k + 1, right);
+		}
+	}
+	public int getK(int left, int right) {
+		int l = left, r = right - 1, p = this.arr[right];
+		do {
+			while (l < right && this.arr[l] <= p)
+				l++;
+			while (r > left && this.arr[r] > p)
+				r--;
+			if (l < r)
+				swap(l, r);
+		} while (l < r);
+		swap(l, right);
+		return l;
+	}
+	
 	/* HELPER METHODS */
 	public void swap(int i, int j) {
 		int temp = this.arr[j];
