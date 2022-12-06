@@ -6,7 +6,8 @@ and playing around with algorithms learnt in the *algorithms & datastructures* l
 - Selection Sort
 - Insertion Sort
 - Heap Sort
-- (in progress)
+- Merge Sort
+- Quick Sort
 
 ## Search Algorithms
 - (in progress)
