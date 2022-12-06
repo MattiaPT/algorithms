@@ -84,6 +84,42 @@ public class Sorter {
 		}
 	}
 	
+	/* MERGE SORT */
+	public void mergeSort() {
+		mergeSort(0, this.arr.length/2);
+		mergeSort(this.arr.length/2 + 1, this.arr.length - 1);
+		merge(0, this.arr.length/2, this.arr.length - 1);
+	}
+	public void mergeSort(int left, int right) {
+		if (left < right) {
+			int middle = (left + right)/2;
+			mergeSort(left, middle);
+			mergeSort(middle + 1, right);
+			merge(left, middle, right);
+		}
+	}
+	public void merge(int left, int middle, int right) {
+		int[] B = new int[right-left+1];
+		int k = 0;
+		int l = left, m = middle + 1, r = right;
+		
+		while (l <= middle && m <= r) {
+			if (this.arr[l] < this.arr[m])
+				B[k++] = this.arr[l++];
+			else
+				B[k++] = this.arr[m++];
+		}
+		
+		// fill up rest
+		while (l <= middle)
+			B[k++] = this.arr[l++];
+		while (m <= r)
+			B[k++] = this.arr[m++];
+		
+		for (int i = left; i <= right; i++)
+			this.arr[i] = B[i-left];
+	}
+	
 	/* HELPER METHODS */
 	public void swap(int i, int j) {
 		int temp = this.arr[j];

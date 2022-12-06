@@ -48,7 +48,6 @@ public class SortTest {
 		s.insertionSort();
 		assertEquals(true, s.isSorted());
 	}
-	
 
 	@Test
 	public void testHeapSort() {
@@ -58,6 +57,18 @@ public class SortTest {
 		
 		s.arr = new int[] {12, 53, 2, 3, 5, 5, 2, 1, 2, 9};
 		s.heapSort();
+		assertEquals(true, s.isSorted());
+	}
+	
+
+	@Test
+	public void testMergeSort() {
+		Sorter s = new Sorter(new int[] {124, 643, 1234, 34, 2, 4, 0, 12});
+		s.mergeSort();
+		assertEquals(true, s.isSorted());
+		
+		s.arr = new int[] {12, 53, 2, 3, 5, 5, 2, 1, 2, 9};
+		s.mergeSort();
 		assertEquals(true, s.isSorted());
 	}
 }
