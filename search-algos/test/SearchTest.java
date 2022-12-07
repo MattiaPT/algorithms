@@ -5,17 +5,41 @@ import org.junit.jupiter.api.Test;
 public class SearchTest {
 	
 	@Test
-	public void testReachableDFS() {
+	public void testReachableDFSrec() {
 		Searcher s = new Searcher(createArrayList());
-		System.out.println(s);
 		
-		assertEquals(true, s.reachableDFS(7, 6));
-		assertEquals(false, s.reachableDFS(6, 7));
+		assertEquals(true, s.reachableDFSrec(7, 6));
+		assertEquals(false, s.reachableDFSrec(6, 7));
 		
-		assertEquals(true, s.reachableDFS(0, 6));
-		assertEquals(false, s.reachableDFS(0, 1));
+		assertEquals(true, s.reachableDFSrec(0, 6));
+		assertEquals(false, s.reachableDFSrec(0, 1));
 		
 	}
+	
+	@Test
+	public void testReachableDFSit() {
+		Searcher s = new Searcher(createArrayList());
+		
+		assertEquals(true, s.reachableDFSit(7, 6));
+		assertEquals(false, s.reachableDFSit(6, 7));
+		
+		assertEquals(true, s.reachableDFSit(0, 6));
+		assertEquals(false, s.reachableDFSit(0, 1));
+		
+	}
+	
+	@Test
+	public void testReachableBFSit() {
+		Searcher s = new Searcher(createArrayList());
+		
+		assertEquals(true, s.reachableBFSit(7, 6));
+		assertEquals(false, s.reachableBFSit(6, 7));
+		
+		assertEquals(true, s.reachableBFSit(0, 6));
+		assertEquals(false, s.reachableBFSit(0, 1));
+		
+	}
+	
 	public ArrayList<ArrayList<Integer>> createArrayList() {
 		ArrayList<ArrayList<Integer>> n = new ArrayList<ArrayList<Integer>>();
 		

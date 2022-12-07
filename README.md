@@ -11,4 +11,4 @@ and playing around with algorithms learnt in the *algorithms & datastructures* l
 
 ## Search Algorithms
 - DFS: Test Reachability, (in progress)
-- BFS: (in progress)
+- BFS: Test Reachability, (in progress)
