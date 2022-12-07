@@ -29,6 +29,18 @@ public class SearchTest {
 	}
 	
 	@Test
+	public void testReachableBFSrec() {
+		Searcher s = new Searcher(createArrayList());
+		
+		assertEquals(true, s.reachableBFSrec(7, 6));
+		assertEquals(false, s.reachableBFSrec(6, 7));
+		
+		assertEquals(true, s.reachableBFSrec(0, 6));
+		assertEquals(false, s.reachableBFSrec(0, 1));
+		
+	}
+	
+	@Test
 	public void testReachableBFSit() {
 		Searcher s = new Searcher(createArrayList());
 		

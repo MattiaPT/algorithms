@@ -38,6 +38,23 @@ public class Searcher {
 	
 	
 	/* tests reachability of y from start x using BFS */
+	/* recursively */
+	public boolean reachableBFSrec(int x, int y) {
+		ArrayList<Integer> queue = new ArrayList<Integer>();
+		queue.add(x);
+		return helperReachableBFSrec(queue, y);
+	}
+	public boolean helperReachableBFSrec(ArrayList<Integer> queue, int y) {
+		if (queue.size() == 0)
+			return false;
+		int p = queue.remove(0);
+		if (p == y)
+			return true;
+		for (int i = 0; i < this.adj.get(p).size(); i++) {
+			queue.add(this.adj.get(p).get(i));
+		}
+		return helperReachableBFSrec(queue, y);
+	}
 	/* iteratively */
 	public boolean reachableBFSit(int x, int y) {
 		ArrayList<Integer> queue = new ArrayList<>();
