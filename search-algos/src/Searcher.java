@@ -1,4 +1,8 @@
 import java.util.ArrayList;
+import java.util.Stack;
+import java.util.Queue;
+import java.util.LinkedList;
+
 
 public class Searcher {
 	ArrayList<ArrayList<Integer>> adj;
@@ -22,14 +26,14 @@ public class Searcher {
 	}
 	/* iteratively */
 	public boolean reachableDFSit(int x, int y) {
-		ArrayList<Integer> stack = new ArrayList<>();
-		stack.add(x);
+		Stack<Integer> stack = new Stack<Integer>();
+		stack.push(x);
 		while (stack.size() != 0) {
-			int p = stack.remove(0);
+			int p = stack.pop();
 			if (p == y)
 				return true;
 			for (int i = 0; i < this.adj.get(p).size(); i++) {
-				stack.add(0, adj.get(p).get(i));
+				stack.push(adj.get(p).get(i));
 			}
 		}
 		return false;
@@ -40,14 +44,14 @@ public class Searcher {
 	/* tests reachability of y from start x using BFS */
 	/* recursively */
 	public boolean reachableBFSrec(int x, int y) {
-		ArrayList<Integer> queue = new ArrayList<Integer>();
+		Queue<Integer> queue = new LinkedList<Integer>();
 		queue.add(x);
 		return helperReachableBFSrec(queue, y);
 	}
-	public boolean helperReachableBFSrec(ArrayList<Integer> queue, int y) {
+	public boolean helperReachableBFSrec(Queue<Integer> queue, int y) {
 		if (queue.size() == 0)
 			return false;
-		int p = queue.remove(0);
+		int p = queue.remove();
 		if (p == y)
 			return true;
 		for (int i = 0; i < this.adj.get(p).size(); i++) {
