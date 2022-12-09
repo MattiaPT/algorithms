@@ -88,6 +88,16 @@ public class Searcher {
 		return false;
 	}
 	
+	
+	/* shortest path tree using Dijkstra */
+	public int[] Dijkstra(int start) {
+		int[] d = new int[this.adj.size()];
+		for (int i = 0; i < d.length; i++)
+			d[i] = (i == start)? 0: Integer.MAX_VALUE;
+		Heap<Integer> H = new Heap<>(new Integer[] {10, 3, 2, 5, 123, 5}, false);
+		return d;
+	}
+	
 	/* HELPER METHODS */
 	public String toString() {
 		return adj + "";
