@@ -17,11 +17,16 @@ public class Searcher {
 	/* tests reachability of y from start x using DFS */
 	/* recursively */
 	public boolean reachableDFSrec(int x, int y) {
+		boolean[] visited = new boolean[this.adj.size()];
+		return reachableDFSrec(x, y, visited);
+	}
+	public boolean reachableDFSrec(int x, int y, boolean[] visited) {
+		visited[x] = true;
 		if (x == y)
 			return true;
 		boolean ret = false;
 		for (int i : this.adj.get(x))
-			ret = ret || reachableDFSrec(i, y);
+			ret = ret || (!visited[i] && reachableDFSrec(i, y, visited));
 		return ret;
 	}
 	/* iteratively */
