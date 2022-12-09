@@ -73,13 +73,16 @@ public class Searcher {
 	/* iteratively */
 	public boolean reachableBFSit(int x, int y) {
 		ArrayList<Integer> queue = new ArrayList<>();
+		boolean[] visited = new boolean[this.adj.size()];
 		queue.add(x);
 		while (queue.size() != 0) {
 			int p = queue.remove(0);
+			visited[p] = true;
 			if (p == y)
 				return true;
 			for (int i = 0; i < this.adj.get(p).size(); i++) {
-				queue.add(this.adj.get(p).get(i));
+				if (!visited[this.adj.get(p).get(i)])
+					queue.add(this.adj.get(p).get(i));
 			}
 		}
 		return false;
