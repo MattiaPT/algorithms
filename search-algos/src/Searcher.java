@@ -32,13 +32,16 @@ public class Searcher {
 	/* iteratively */
 	public boolean reachableDFSit(int x, int y) {
 		Stack<Integer> stack = new Stack<Integer>();
+		boolean[] visited = new boolean[this.adj.size()];
 		stack.push(x);
 		while (stack.size() != 0) {
 			int p = stack.pop();
+			visited[p] = true;
 			if (p == y)
 				return true;
 			for (int i = 0; i < this.adj.get(p).size(); i++) {
-				stack.push(adj.get(p).get(i));
+				if (!visited[adj.get(p).get(i)])
+					stack.push(adj.get(p).get(i));
 			}
 		}
 		return false;
