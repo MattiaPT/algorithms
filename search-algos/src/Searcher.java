@@ -40,8 +40,8 @@ public class Searcher {
 			if (p == y)
 				return true;
 			for (int i = 0; i < this.adj.get(p).size(); i++) {
-				if (!visited[adj.get(p).get(i)])
-					stack.push(adj.get(p).get(i));
+				if (!visited[this.adj.get(p).get(i)])
+					stack.push(this.adj.get(p).get(i));
 			}
 		}
 		return false;
@@ -53,19 +53,22 @@ public class Searcher {
 	/* recursively */
 	public boolean reachableBFSrec(int x, int y) {
 		Queue<Integer> queue = new LinkedList<Integer>();
+		boolean[] visited = new boolean[this.adj.size()];
 		queue.add(x);
-		return helperReachableBFSrec(queue, y);
+		return helperReachableBFSrec(queue, y, visited);
 	}
-	public boolean helperReachableBFSrec(Queue<Integer> queue, int y) {
+	public boolean helperReachableBFSrec(Queue<Integer> queue, int y, boolean[] visited) {
 		if (queue.size() == 0)
 			return false;
 		int p = queue.remove();
+		visited[p] = true;
 		if (p == y)
 			return true;
 		for (int i = 0; i < this.adj.get(p).size(); i++) {
-			queue.add(this.adj.get(p).get(i));
+			if (!visited[this.adj.get(p).get(i)])
+				queue.add(this.adj.get(p).get(i));
 		}
-		return helperReachableBFSrec(queue, y);
+		return helperReachableBFSrec(queue, y, visited);
 	}
 	/* iteratively */
 	public boolean reachableBFSit(int x, int y) {
