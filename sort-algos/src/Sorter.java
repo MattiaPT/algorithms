@@ -73,7 +73,7 @@ public class Sorter {
 	}
 	public void restoreHeap(int i) {
 		for (int j = 0; j < i;) {
-			if (j*2+1 < i && this.arr[2*j+1] >= this.arr[2*j+2] && this.arr[2*j+1] >= this.arr[j]) {
+			if (j*2+1 < i && (2*j+2 == this.arr.length || this.arr[2*j+1] >= this.arr[2*j+2]) && this.arr[2*j+1] >= this.arr[j]) {
 				swap(j, j*2+1);
 				j = 2*j+1;
 			} else if ((j+1)*2 < i && this.arr[2*j+1] <= this.arr[2*j+2] && this.arr[j] <= this.arr[2*j+2]) {
