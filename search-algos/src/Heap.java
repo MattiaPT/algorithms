@@ -16,6 +16,9 @@ public class Heap<T extends Comparable<T>>{
 		}
 	}
 	
+	public void restoreHeapCondition() {
+		restoreHeapCondition(0);
+	}
 	public void restoreHeapCondition(int i) {
 		for (int j = i; j < H.size();) {
 			if (j*2+1 < this.H.size() && (j*2+2 == this.H.size() || 0 <= this.H.get(2*j+1).compareTo(this.H.get(2*j+2))) && 0 <= this.H.get(2*j+1).compareTo(this.H.get(j))) {

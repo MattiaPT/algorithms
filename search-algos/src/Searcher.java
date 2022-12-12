@@ -94,7 +94,12 @@ public class Searcher {
 		int[] d = new int[this.adj.size()];
 		for (int i = 0; i < d.length; i++)
 			d[i] = (i == start)? 0: Integer.MAX_VALUE;
-		Heap<Integer> H = new Heap<>(new Integer[] {10, 3, 2, 5, 123, 5}, false);
+		int[] elements = {10, 3, 2, 5, 123, 5};
+		Node[] nodes = new Node[elements.length];
+		for (int i = 0; i < elements.length; i++)
+			nodes[i] = new Node(elements[i]);
+		
+		Heap<Node> H = new Heap<Node>(nodes, false);
 		System.out.println(H);
 		return d;
 	}
