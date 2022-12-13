@@ -32,6 +32,12 @@ public class Heap<T extends Comparable<T>>{
 		}
 	}
 	
+	public T removeFirst() {
+		T ret = H.remove(0);
+		restoreHeapCondition();
+		return ret;
+	}
+		
 	public void swap(int i, int j) {
 		T temp = H.get(i);
 		H.set(i, H.get(j));

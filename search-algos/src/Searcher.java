@@ -1,11 +1,14 @@
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Stack;
 import java.util.Queue;
 import java.util.LinkedList;
+import java.lang.Math;
 
 
 public class Searcher {
 	ArrayList<ArrayList<Integer>> adj;
+	int[][] c;
 	
 	public Searcher() {
 		this(new ArrayList<>());
@@ -99,10 +102,22 @@ public class Searcher {
 		for (int i = 0; i < elements.length; i++)
 			nodes[i] = new Node(elements[i]);
 		
-		Heap<Node> H = new Heap<Node>(nodes, false);
-		System.out.println(H);
+		Heap<Node<Integer>> H = new Heap<Node<Integer>>(nodes, false);
+		
+		HashSet<Node> S = new HashSet<>();
+		while (S.size() != this.adj.size()) {
+			Node<Integer> v = H.removeFirst();
+			S.add(v);
+			for (int i = 0; i < this.adj.get(v.value).size(); i++) {
+				if (S.contains(this.adj.get(v.value).get(i)))
+					continue;
+				d[this.adj.get(v.value).get(i)] = Math.min(d[this.adj.get(v.value).get(i)], d[v.value] + c[this.adj.get(v.value).get(i)][v.value]);
+				decreaseKey(H, this.adj.get(v.value).get(i), d[this.adj.get(v.value).get(i)]);
+			}
+		}
 		return d;
 	}
+	public void decreaseKey(Heap H, Node ptr, int value) {}
 	
 	/* HELPER METHODS */
 	public String toString() {
