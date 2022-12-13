@@ -1,8 +1,12 @@
 
 public class Node<T extends Comparable<T>> implements Comparable<Node<T>>{
+	static int id;
+	
+	int index;
 	T value;
 	
 	public Node(T value) {
+		this.index = id++;
 		this.value = value;
 	}
 	

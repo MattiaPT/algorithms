@@ -4,14 +4,14 @@ import java.util.Arrays;
 public class Searcher_weighted {
 	Graph G;
 	
-	public Searcher_weighted(ArrayList<ArrayList<Integer>> adj, Integer[] weights) {
+	public Searcher_weighted(ArrayList<ArrayList<Integer>> adj, Integer[][] weights) {
 		this.G = new Graph(adj, weights);
 	}
 	
 	/* shortest path tree using Dijkstra */
 	public int[] Dijkstra(int start) {
 		ArrayList<ArrayList<Integer>> adj = G.getAdjacencyList();
-		ArrayList<Integer> weights = G.getWeights();
+		Integer[][] weights = G.getWeights();
 		int[] d = new int[adj.size()];
 		for (int i = 0; i < d.length; i++)
 			d[i] = (i == start)? 0: Integer.MAX_VALUE;
