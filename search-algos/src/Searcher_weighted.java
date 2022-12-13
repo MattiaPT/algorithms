@@ -12,7 +12,7 @@ public class Searcher_weighted {
 	public int[] Dijkstra(int start) {
 		ArrayList<ArrayList<Integer>> adj = G.getAdjacencyList();
 		ArrayList<Integer> weights = G.getWeights();
-		int[] d = new int[this.adj.size()];
+		int[] d = new int[adj.size()];
 		for (int i = 0; i < d.length; i++)
 			d[i] = (i == start)? 0: Integer.MAX_VALUE;
 		int[] elements = {10, 3, 2, 5, 123, 5};
@@ -25,14 +25,14 @@ public class Searcher_weighted {
 		ArrayList<Node<Integer>> S = new ArrayList<>(Arrays.asList(nodes));
 		
 		System.out.println("CHECKPOINT");
-		while (S.size() != this.adj.size()) {
+		while (S.size() != adj.size()) {
 			Node<Integer> v = H.removeFirst();
 			S.add(v);
-			for (int i = 0; i < this.adj.get(v.value).size(); i++) {
-				if (S.contains(this.adj.get(v.value).get(i)))
+			for (int i = 0; i < adj.get(v.value).size(); i++) {
+				if (S.contains(adj.get(v.value).get(i)))
 					continue;
-				d[this.adj.get(v.value).get(i)] = Math.min(d[this.adj.get(v.value).get(i)], d[v.value] + weights[this.adj.get(v.value).get(i)][v.value]);
-				decreaseKey(H, S.get(this.adj.get(v.value).get(i)), d[this.adj.get(v.value).get(i)]);
+				d[adj.get(v.value).get(i)] = Math.min(d[adj.get(v.value).get(i)], d[v.value] + weights[adj.get(v.value).get(i)][v.value]);
+				decreaseKey(H, S.get(adj.get(v.value).get(i)), d[adj.get(v.value).get(i)]);
 			}
 		}
 		return d;
