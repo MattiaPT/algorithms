@@ -6,14 +6,14 @@ import java.util.LinkedList;
 import java.lang.Math;
 
 
-public class Searcher {
+public class Searcher_unweighted {
 	Graph G;
 	
-	public Searcher() {
+	public Searcher_unweighted() {
 		this(new ArrayList<>());
 	}
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public Searcher(ArrayList<ArrayList<Integer>> adj) {
+	public Searcher_unweighted(ArrayList<ArrayList<Integer>> adj) {
 		this.G = new Graph(adj);
 	}
 

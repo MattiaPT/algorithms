@@ -4,6 +4,9 @@ import java.util.Arrays;
 public class Searcher_weighted {
 	Graph G;
 	
+	public Searcher_weighted(Graph G) {
+		this.G = G;
+	}
 	public Searcher_weighted(ArrayList<ArrayList<Integer>> adj, Integer[][] weights) {
 		this.G = new Graph(adj, weights);
 	}

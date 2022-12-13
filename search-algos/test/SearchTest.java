@@ -4,9 +4,12 @@ import org.junit.jupiter.api.Test;
 
 public class SearchTest {
 	
+	
+	/* test with unweighted graphs */
+	
 	@Test
 	public void testReachableDFSrec() {
-		Searcher s = new Searcher(createArrayList());
+		Searcher_unweighted s = new Searcher_unweighted(createArrayList());
 		
 		assertEquals(true, s.reachableDFSrec(7, 6));
 		assertEquals(false, s.reachableDFSrec(6, 7));
@@ -15,10 +18,9 @@ public class SearchTest {
 		assertEquals(false, s.reachableDFSrec(0, 1));
 		
 	}
-	
 	@Test
 	public void testReachableDFSit() {
-		Searcher s = new Searcher(createArrayList());
+		Searcher_unweighted s = new Searcher_unweighted(createArrayList());
 		
 		assertEquals(true, s.reachableDFSit(7, 6));
 		assertEquals(false, s.reachableDFSit(6, 7));
@@ -27,10 +29,9 @@ public class SearchTest {
 		assertEquals(false, s.reachableDFSit(0, 1));
 		
 	}
-	
 	@Test
 	public void testReachableBFSrec() {
-		Searcher s = new Searcher(createArrayList());
+		Searcher_unweighted s = new Searcher_unweighted(createArrayList());
 		
 		assertEquals(true, s.reachableBFSrec(7, 6));
 		assertEquals(false, s.reachableBFSrec(6, 7));
@@ -39,10 +40,9 @@ public class SearchTest {
 		assertEquals(false, s.reachableBFSrec(0, 1));
 		
 	}
-	
 	@Test
 	public void testReachableBFSit() {
-		Searcher s = new Searcher(createArrayList());
+		Searcher_unweighted s = new Searcher_unweighted(createArrayList());
 		
 		assertEquals(true, s.reachableBFSit(7, 6));
 		assertEquals(false, s.reachableBFSit(6, 7));
@@ -52,9 +52,12 @@ public class SearchTest {
 		
 	}
 	
+	
+	/* tests with weighted graphs */
+	
 	@Test
 	public void testDijkstra() {
-		
+		Searcher_weighted s = new Searcher_weighted(createGraph());
 	}
 	
 	public ArrayList<ArrayList<Integer>> createArrayList() {
@@ -75,5 +78,8 @@ public class SearchTest {
 		n.get(7).add(4);
 		
 		return n;
+	}
+	public Graph createGraph() {
+		return null;
 	}
 }
