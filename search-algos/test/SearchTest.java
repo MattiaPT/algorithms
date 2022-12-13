@@ -54,8 +54,7 @@ public class SearchTest {
 	
 	@Test
 	public void testDijkstra() {
-		Searcher s = new Searcher(createArrayList());
-		s.Dijkstra(0);
+		
 	}
 	
 	public ArrayList<ArrayList<Integer>> createArrayList() {
