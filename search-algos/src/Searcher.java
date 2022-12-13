@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Stack;
 import java.util.Queue;
@@ -103,8 +104,8 @@ public class Searcher {
 			nodes[i] = new Node(elements[i]);
 		
 		Heap<Node<Integer>> H = new Heap<Node<Integer>>(nodes, false);
+		HashSet<Node<Integer>> S = new HashSet<>(Arrays.asList(nodes));
 		
-		HashSet<Node> S = new HashSet<>();
 		while (S.size() != this.adj.size()) {
 			Node<Integer> v = H.removeFirst();
 			S.add(v);
@@ -117,7 +118,9 @@ public class Searcher {
 		}
 		return d;
 	}
-	public void decreaseKey(Heap H, Node ptr, int value) {}
+	public void decreaseKey(Heap H, Node ptr, int value) {
+		S.
+	}
 	
 	/* HELPER METHODS */
 	public String toString() {
