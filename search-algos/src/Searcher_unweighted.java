@@ -13,42 +13,42 @@ public class Searcher_unweighted {
 		this(new ArrayList<>());
 	}
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public Searcher_unweighted(ArrayList<ArrayList<Integer>> adj) {
+	public Searcher_unweighted(ArrayList<ArrayList<Node<Integer>>> adj) {
 		this.G = new Graph(adj);
 	}
 
 	/* tests reachability of y from start x using DFS */
 	/* recursively */
-	public boolean reachableDFSrec(int x, int y) {
+	public boolean reachableDFSrec(Node x, Node y) {
 		boolean[] visited = new boolean[this.G.getAdjacencyList().size()];
 		return reachableDFSrec(x, y, visited);
 	}
-	public boolean reachableDFSrec(int x, int y, boolean[] visited) {
-		visited[x] = true;
-		if (x == y)
+	public boolean reachableDFSrec(Node x, Node y, boolean[] visited) {
+		visited[x.index] = true;
+		if (x.index == y.index)
 			return true;
 		boolean ret = false;
 		@SuppressWarnings("unchecked")
-		ArrayList<ArrayList<Integer>> adj = this.G.getAdjacencyList();
-		for (int i : adj.get(x))
-			ret = ret || (!visited[i] && reachableDFSrec(i, y, visited));
+		ArrayList<ArrayList<Node<Integer>>> adj = this.G.getAdjacencyList();
+		for (Node<Integer> i : adj.get(x.index))
+			ret = ret || (!visited[i.index] && reachableDFSrec(i, y, visited));
 		return ret;
 	}
 	/* iteratively */
-	public boolean reachableDFSit(int x, int y) {
-		Stack<Integer> stack = new Stack<Integer>();
+	public boolean reachableDFSit(Node x, Node y) {
+		Stack<Node<Integer>> stack = new Stack<Node<Integer>>();
 		@SuppressWarnings("unchecked")
-		ArrayList<ArrayList<Integer>> adj = this.G.getAdjacencyList();
+		ArrayList<ArrayList<Node<Integer>>> adj = this.G.getAdjacencyList();
 		boolean[] visited = new boolean[adj.size()];
 		stack.push(x);
 		while (stack.size() != 0) {
-			int p = stack.pop();
-			visited[p] = true;
-			if (p == y)
+			Node p = stack.pop();
+			visited[p.index] = true;
+			if (p.index == y.index)
 				return true;
-			for (int i = 0; i < adj.get(p).size(); i++) {
-				if (!visited[adj.get(p).get(i)])
-					stack.push(adj.get(p).get(i));
+			for (int i = 0; i < adj.get(p.index).size(); i++) {
+				if (!visited[adj.get(p.index).get(i).index])
+					stack.push(adj.get(p.index).get(i));
 			}
 		}
 		return false;
@@ -58,42 +58,42 @@ public class Searcher_unweighted {
 	
 	/* tests reachability of y from start x using BFS */
 	/* recursively */
-	public boolean reachableBFSrec(int x, int y) {
-		Queue<Integer> queue = new LinkedList<Integer>();
+	public boolean reachableBFSrec(Node x, Node y) {
+		Queue<Node<Integer>> queue = new LinkedList<Node<Integer>>();
 		boolean[] visited = new boolean[this.G.getAdjacencyList().size()];
 		queue.add(x);
 		return helperReachableBFSrec(queue, y, visited);
 	}
-	public boolean helperReachableBFSrec(Queue<Integer> queue, int y, boolean[] visited) {
+	public boolean helperReachableBFSrec(Queue<Node<Integer>> queue, Node y, boolean[] visited) {
 		if (queue.size() == 0)
 			return false;
-		int p = queue.remove();
-		visited[p] = true;
-		if (p == y)
+		Node p = queue.remove();
+		visited[p.index] = true;
+		if (p.index == y.index)
 			return true;
 		@SuppressWarnings("unchecked")
-		ArrayList<ArrayList<Integer>> adj = this.G.getAdjacencyList();
-		for (int i = 0; i < adj.get(p).size(); i++) {
-			if (!visited[adj.get(p).get(i)])
-				queue.add(adj.get(p).get(i));
+		ArrayList<ArrayList<Node<Integer>>> adj = this.G.getAdjacencyList();
+		for (int i = 0; i < adj.get(p.index).size(); i++) {
+			if (!visited[adj.get(p.index).get(i).index])
+				queue.add(adj.get(p.index).get(i));
 		}
 		return helperReachableBFSrec(queue, y, visited);
 	}
 	/* iteratively */
-	public boolean reachableBFSit(int x, int y) {
-		ArrayList<Integer> queue = new ArrayList<>();
+	public boolean reachableBFSit(Node x, Node y) {
+		ArrayList<Node<Integer>> queue = new ArrayList<>();
 		@SuppressWarnings("unchecked")
-		ArrayList<ArrayList<Integer>> adj = this.G.getAdjacencyList();
+		ArrayList<ArrayList<Node<Integer>>> adj = this.G.getAdjacencyList();
 		boolean[] visited = new boolean[adj.size()];
 		queue.add(x);
 		while (queue.size() != 0) {
-			int p = queue.remove(0);
-			visited[p] = true;
-			if (p == y)
+			Node p = queue.remove(0);
+			visited[p.index] = true;
+			if (p.index == y.index)
 				return true;
-			for (int i = 0; i < adj.get(p).size(); i++) {
-				if (!visited[adj.get(p).get(i)])
-					queue.add(adj.get(p).get(i));
+			for (int i = 0; i < adj.get(p.index).size(); i++) {
+				if (!visited[adj.get(p.index).get(i).index])
+					queue.add(adj.get(p.index).get(i));
 			}
 		}
 		return false;
