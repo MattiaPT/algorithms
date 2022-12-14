@@ -4,7 +4,7 @@ public class Heap<T extends Comparable<T>>{
 	ArrayList<T> H;
 	boolean min;
 	
-	public Heap(T[] elements, boolean min) {
+	public Heap(ArrayList<T> elements, boolean min) {
 		H = new ArrayList<T>();
 		for (T element : elements)
 			H.add(element);

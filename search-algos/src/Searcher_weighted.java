@@ -7,35 +7,33 @@ public class Searcher_weighted {
 	public Searcher_weighted(Graph G) {
 		this.G = G;
 	}
-	public Searcher_weighted(ArrayList<ArrayList<Integer>> adj, Integer[][] weights) {
-		this.G = new Graph(adj, weights);
+	public Searcher_weighted(ArrayList<Node<Integer>> nodes, ArrayList<ArrayList<Integer>> adj, Integer[][] weights) {
+		this.G = new Graph(nodes, adj, weights);
 	}
 	
 	/* shortest path tree using Dijkstra */
-	public int[] Dijkstra(int start) {
-		ArrayList<ArrayList<Integer>> adj = G.getAdjacencyList();
+	public int[] dijkstra(Node<Integer> start) {
+		ArrayList<ArrayList<Node<Integer>>> adj = G.getAdjacencyList();
 		Integer[][] weights = G.getWeights();
 		int[] d = new int[adj.size()];
 		for (int i = 0; i < d.length; i++)
-			d[i] = (i == start)? 0: Integer.MAX_VALUE;
-		int[] elements = {10, 3, 2, 5, 123, 5};
-		@SuppressWarnings("unchecked")
-		Node<Integer>[] nodes = new Node[elements.length];
-		for (int i = 0; i < elements.length; i++)
-			nodes[i] = new Node<Integer>(elements[i]);
+			d[i] = (i == start.index)? 0: Integer.MAX_VALUE;
 		
-		Heap<Node<Integer>> H = new Heap<Node<Integer>>(nodes, false);
-		ArrayList<Node<Integer>> S = new ArrayList<>(Arrays.asList(nodes));
+		Heap<Node<Integer>> H = new Heap<Node<Integer>>(G.getNodes(), false);
+		ArrayList<Node<Integer>> S = new ArrayList<>();
 		
-		System.out.println("CHECKPOINT");
+		decreaseKey(H, start, 0);
+		System.out.println(H);
+		System.out.println(S);
+		System.out.println(Arrays.toString(d));
 		while (S.size() != adj.size()) {
 			Node<Integer> v = H.removeFirst();
 			S.add(v);
-			for (int i = 0; i < adj.get(v.value).size(); i++) {
-				if (S.contains(adj.get(v.value).get(i)))
+			for (int i = 0; i < adj.get(v.index).size(); i++) {
+				if (S.contains(adj.get(v.index).get(i)))
 					continue;
-				d[adj.get(v.value).get(i)] = Math.min(d[adj.get(v.value).get(i)], d[v.value] + weights[adj.get(v.value).get(i)][v.value]);
-				decreaseKey(H, S.get(adj.get(v.value).get(i)), d[adj.get(v.value).get(i)]);
+				d[adj.get(v.index).get(i).index] = Math.min(d[adj.get(v.index).get(i).index], d[v.index] + weights[adj.get(v.index).get(i).index][v.index]);
+				decreaseKey(H, S.get(adj.get(v.index).get(i).index), d[adj.get(v.index).get(i).index]);
 			}
 		}
 		return d;
