@@ -60,6 +60,7 @@ public class SearchTest {
 	/* tests with weighted graphs */
 	
 	@Test
+	@SuppressWarnings("unchecked")
 	public void testDijkstra() {
 		Graph<Integer> G = createGraph();
 		Searcher_weighted s = new Searcher_weighted(G);
@@ -144,13 +145,13 @@ public class SearchTest {
 		adj.add(node_3_adj);
 		adj.add(node_4_adj);
 		
-		Integer[][] weights = new Integer[adj.size()][adj.size()];
-		weights[0] = new Integer[] {0, 4, 2, 0, 18};
-		weights[1] = new Integer[] {0, 0, 0, 0, 1};
-		weights[2] = new Integer[] {0, 0, 0, 1, 0};
-		weights[3] = new Integer[] {0, 0, 0, 0, 1};
-		weights[4] = new Integer[] {0, 0, 1, 0, 0};
+		Edge<Integer>[][] edges = (Edge<Integer>[][]) new Object[adj.size()][adj.size()];
+		edges[0] = (Edge<Integer>[]) new Object[] {new Edge<Integer>(node_0, node_0, 0), new Edge<Integer>(node_0, node_1, 4), new Edge<Integer>(node_0, node_2, 2), new Edge<Integer>(node_0, node_3, 0), new Edge<Integer>(node_0, node_4, 18)};
+		edges[1] = (Edge<Integer>[]) new Object[] {new Edge<Integer>(node_1, node_0, 0), new Edge<Integer>(node_1, node_1, 0), new Edge<Integer>(node_1, node_2, 0), new Edge<Integer>(node_1, node_3, 0), new Edge<Integer>(node_1, node_4, 1)};
+		edges[2] = (Edge<Integer>[]) new Object[] {new Edge<Integer>(node_2, node_0, 0), new Edge<Integer>(node_2, node_1, 0), new Edge<Integer>(node_2, node_2, 0), new Edge<Integer>(node_2, node_3, 1), new Edge<Integer>(node_2, node_4, 0)};
+		edges[3] = (Edge<Integer>[]) new Object[] {new Edge<Integer>(node_3, node_0, 0), new Edge<Integer>(node_3, node_1, 0), new Edge<Integer>(node_3, node_2, 0), new Edge<Integer>(node_3, node_3, 0), new Edge<Integer>(node_3, node_4, 1)};
+		edges[4] = (Edge<Integer>[]) new Object[] {new Edge<Integer>(node_4, node_0, 0), new Edge<Integer>(node_4, node_1, 0), new Edge<Integer>(node_4, node_2, 1), new Edge<Integer>(node_4, node_3, 0), new Edge<Integer>(node_4, node_4, 0)};
 
-		return new Graph(nodes, adj, weights, node_0, node_4);
+		return new Graph(nodes, adj, edges, node_0, node_4);
 	}
 }

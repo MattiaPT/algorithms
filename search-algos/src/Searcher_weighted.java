@@ -7,14 +7,16 @@ public class Searcher_weighted {
 	public Searcher_weighted(Graph G) {
 		this.G = G;
 	}
-	public Searcher_weighted(ArrayList<Node<Integer>> nodes, ArrayList<ArrayList<Integer>> adj, Integer[][] weights) {
-		this.G = new Graph(nodes, adj, weights);
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public Searcher_weighted(ArrayList<Node<Integer>> nodes, ArrayList<ArrayList<Integer>> adj, Edge<Integer>[][] edges) {
+		this.G = new Graph(nodes, adj, edges);
 	}
 	
 	/* shortest path tree using Dijkstra */
+	@SuppressWarnings("unchecked")
 	public int[] dijkstra(Node<Integer> start) {
 		ArrayList<ArrayList<Node<Integer>>> adj = G.getAdjacencyList();
-		Integer[][] weights = G.getWeights();
+		Edge<Integer>[][] edges = G.getEdges();
 		int[] d = new int[adj.size()];
 		for (int i = 0; i < d.length; i++)
 			d[i] = (i == start.index)? 0: Integer.MAX_VALUE;
@@ -32,7 +34,7 @@ public class Searcher_weighted {
 			for (int i = 0; i < adj.get(v.index).size(); i++) {
 				if (S.contains(adj.get(v.index).get(i)))
 					continue;
-				d[adj.get(v.index).get(i).index] = Math.min(d[adj.get(v.index).get(i).index], d[v.index] + weights[adj.get(v.index).get(i).index][v.index]);
+				d[adj.get(v.index).get(i).index] = Math.min(d[adj.get(v.index).get(i).index], d[v.index] + edges[adj.get(v.index).get(i).index][v.index].cost);
 				decreaseKey(H, S.get(adj.get(v.index).get(i).index), d[adj.get(v.index).get(i).index]);
 			}
 		}
