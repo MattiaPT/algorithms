@@ -145,13 +145,38 @@ public class SearchTest {
 		adj.add(node_3_adj);
 		adj.add(node_4_adj);
 		
-		Edge<Integer>[][] edges = (Edge<Integer>[][]) new Object[adj.size()][adj.size()];
-		edges[0] = (Edge<Integer>[]) new Object[] {new Edge<Integer>(node_0, node_0, 0), new Edge<Integer>(node_0, node_1, 4), new Edge<Integer>(node_0, node_2, 2), new Edge<Integer>(node_0, node_3, 0), new Edge<Integer>(node_0, node_4, 18)};
-		edges[1] = (Edge<Integer>[]) new Object[] {new Edge<Integer>(node_1, node_0, 0), new Edge<Integer>(node_1, node_1, 0), new Edge<Integer>(node_1, node_2, 0), new Edge<Integer>(node_1, node_3, 0), new Edge<Integer>(node_1, node_4, 1)};
-		edges[2] = (Edge<Integer>[]) new Object[] {new Edge<Integer>(node_2, node_0, 0), new Edge<Integer>(node_2, node_1, 0), new Edge<Integer>(node_2, node_2, 0), new Edge<Integer>(node_2, node_3, 1), new Edge<Integer>(node_2, node_4, 0)};
-		edges[3] = (Edge<Integer>[]) new Object[] {new Edge<Integer>(node_3, node_0, 0), new Edge<Integer>(node_3, node_1, 0), new Edge<Integer>(node_3, node_2, 0), new Edge<Integer>(node_3, node_3, 0), new Edge<Integer>(node_3, node_4, 1)};
-		edges[4] = (Edge<Integer>[]) new Object[] {new Edge<Integer>(node_4, node_0, 0), new Edge<Integer>(node_4, node_1, 0), new Edge<Integer>(node_4, node_2, 1), new Edge<Integer>(node_4, node_3, 0), new Edge<Integer>(node_4, node_4, 0)};
-
+		ArrayList<ArrayList<Edge<Integer>>> edges = new ArrayList<>();
+		edges.add(new ArrayList<>());
+		edges.get(0).add(new Edge<Integer>(node_0, node_0, 0));
+		edges.get(0).add(new Edge<Integer>(node_0, node_1, 4));
+		edges.get(0).add(new Edge<Integer>(node_0, node_2, 2));
+		edges.get(0).add(new Edge<Integer>(node_0, node_3, 0));
+		edges.get(0).add(new Edge<Integer>(node_0, node_4, 18));
+		edges.add(new ArrayList<>());
+		edges.get(1).add(new Edge<Integer>(node_1, node_0, 0));
+		edges.get(1).add(new Edge<Integer>(node_1, node_1, 0));
+		edges.get(1).add(new Edge<Integer>(node_1, node_2, 0));
+		edges.get(1).add(new Edge<Integer>(node_1, node_3, 0));
+		edges.get(1).add(new Edge<Integer>(node_1, node_4, 1));
+		edges.add(new ArrayList<>());
+		edges.get(1).add(new Edge<Integer>(node_2, node_0, 0));
+		edges.get(1).add(new Edge<Integer>(node_2, node_1, 0));
+		edges.get(1).add(new Edge<Integer>(node_2, node_2, 0));
+		edges.get(1).add(new Edge<Integer>(node_2, node_3, 1));
+		edges.get(1).add(new Edge<Integer>(node_2, node_4, 0));
+		edges.add(new ArrayList<>());
+		edges.get(1).add(new Edge<Integer>(node_3, node_0, 0));
+		edges.get(1).add(new Edge<Integer>(node_3, node_1, 0));
+		edges.get(1).add(new Edge<Integer>(node_3, node_2, 0));
+		edges.get(1).add(new Edge<Integer>(node_3, node_3, 0));
+		edges.get(1).add(new Edge<Integer>(node_3, node_4, 1));
+		edges.add(new ArrayList<>());
+		edges.get(1).add(new Edge<Integer>(node_4, node_0, 0));
+		edges.get(1).add(new Edge<Integer>(node_4, node_1, 0));
+		edges.get(1).add(new Edge<Integer>(node_4, node_2, 0));
+		edges.get(1).add(new Edge<Integer>(node_4, node_3, 0));
+		edges.get(1).add(new Edge<Integer>(node_4, node_4, 1));
+				
 		return new Graph(nodes, adj, edges, node_0, node_4);
 	}
 }
