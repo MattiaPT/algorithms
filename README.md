@@ -12,7 +12,7 @@ and playing around with algorithms learnt in the *algorithms & datastructures* l
 ## Search Algorithms
 ### in unweighted graphs:
 - DFS: Test Reachability, (in progress)
-- BFS: Test Reachability, (in progress)
+- BFS: Test Reachability, Shortest Path Algorithm, (in progress)
 
 ### in weighted graphs:
 - Dijkstra (shortest path algorithm)
