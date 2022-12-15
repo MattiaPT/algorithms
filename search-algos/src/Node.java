@@ -16,6 +16,6 @@ public class Node<T extends Comparable<T>> implements Comparable<Node<T>>{
 	}
 	
 	public String toString() {
-		return "index: " + index + "\tvalue: " + value;
+		return "(i: " + index + ", v: " + value + ")";
 	}
 }

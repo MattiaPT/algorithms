@@ -18,4 +18,8 @@ public class Edge<T extends Comparable<T>> {
 	public Node<T>[] getStartEnd() {
 		return (Node<T>[]) new Object[] {this.start, this.end};
 	}
+	
+	public String toString() {
+		return "from " + start + " to " + end + " (" + cost + "); ";
+	}
 }

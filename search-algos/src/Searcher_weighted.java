@@ -1,19 +1,17 @@
 import java.util.ArrayList;
-import java.util.Arrays;
 
+@SuppressWarnings({"rawtypes", "unchecked"})
 public class Searcher_weighted {
 	Graph G;
 	
 	public Searcher_weighted(Graph G) {
 		this.G = G;
 	}
-	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public Searcher_weighted(ArrayList<Node<Integer>> nodes, ArrayList<ArrayList<Integer>> adj, ArrayList<ArrayList<Edge<Integer>>> edges) {
 		this.G = new Graph(nodes, adj, edges);
 	}
 	
 	/* shortest path tree using Dijkstra */
-	@SuppressWarnings("unchecked")
 	public int[] dijkstra(Node<Integer> start) {
 		ArrayList<ArrayList<Node<Integer>>> adj = G.getAdjacencyList();
 		ArrayList<ArrayList<Edge<Integer>>> edges = G.getEdges();
@@ -31,7 +29,7 @@ public class Searcher_weighted {
 			for (int i = 0; i < adj.get(v.index).size(); i++) {
 				if (S.contains(adj.get(v.index).get(i)))
 					continue;
-				d[adj.get(v.index).get(i).index] = Math.min(d[adj.get(v.index).get(i).index], d[v.index] + edges.get(adj.get(v.index).get(i).index).get(v.index).cost);
+				d[adj.get(v.index).get(i).index] = Math.min(d[adj.get(v.index).get(i).index], d[v.index] + edges.get(v.index).get(adj.get(v.index).get(i).index).cost);
 				decreaseKey(H, adj.get(v.index).get(i), d[adj.get(v.index).get(i).index]);
 			}
 		}

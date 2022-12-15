@@ -3,11 +3,10 @@ import java.util.Stack;
 import java.util.Queue;
 import java.util.LinkedList;
 
-
+@SuppressWarnings({ "unchecked", "rawtypes" })
 public class Searcher_unweighted {
 	Graph G;
 	
-	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public Searcher_unweighted(ArrayList<Node<Integer>> nodes, ArrayList<ArrayList<Node<Integer>>> adj) {
 		this.G = new Graph(nodes, adj);
 	}
@@ -18,7 +17,6 @@ public class Searcher_unweighted {
 		boolean[] visited = new boolean[this.G.getAdjacencyList().size()];
 		return reachableDFSrec(x, y, visited);
 	}
-	@SuppressWarnings("unchecked")
 	public boolean reachableDFSrec(Node<Integer> x, Node<Integer> y, boolean[] visited) {
 		visited[x.index] = true;
 		if (x.index == y.index)
@@ -30,7 +28,6 @@ public class Searcher_unweighted {
 		return ret;
 	}
 	/* iteratively */
-	@SuppressWarnings("unchecked")
 	public boolean reachableDFSit(Node<Integer> x, Node<Integer> y) {
 		Stack<Node<Integer>> stack = new Stack<Node<Integer>>();
 		ArrayList<ArrayList<Node<Integer>>> adj = this.G.getAdjacencyList();
@@ -66,7 +63,6 @@ public class Searcher_unweighted {
 		visited[p.index] = true;
 		if (p.index == y.index)
 			return true;
-		@SuppressWarnings("unchecked")
 		ArrayList<ArrayList<Node<Integer>>> adj = this.G.getAdjacencyList();
 		for (int i = 0; i < adj.get(p.index).size(); i++) {
 			if (!visited[adj.get(p.index).get(i).index])
@@ -75,7 +71,6 @@ public class Searcher_unweighted {
 		return helperReachableBFSrec(queue, y, visited);
 	}
 	/* iteratively */
-	@SuppressWarnings("unchecked")
 	public boolean reachableBFSit(Node<Integer> x, Node<Integer> y) {
 		ArrayList<Node<Integer>> queue = new ArrayList<>();
 		ArrayList<ArrayList<Node<Integer>>> adj = this.G.getAdjacencyList();

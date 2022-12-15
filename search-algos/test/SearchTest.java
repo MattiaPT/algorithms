@@ -1,7 +1,9 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.ArrayList;
+
 import org.junit.jupiter.api.Test;
 
+@SuppressWarnings({ "unchecked", "rawtypes" })
 public class SearchTest {
 	
 	
@@ -60,18 +62,15 @@ public class SearchTest {
 	/* tests with weighted graphs */
 	
 	@Test
-	@SuppressWarnings("unchecked")
 	public void testDijkstra() {
 		Graph<Integer> G = createGraph();
 		Searcher_weighted s = new Searcher_weighted(G);
 		
 		Node<Integer> start = G.getStart();
-		Node<Integer> end = G.getEnd();
 		
-		System.out.println(s.dijkstra(start));
+		assertEquals(true, s.dijkstra(start)[G.getAdjacencyList().size() - 1] == 4);
 	}
 	
-	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public ArrayList<ArrayList<Node<Integer>>> createArrayList() {
 		Node.id = 0;
 		
@@ -111,7 +110,6 @@ public class SearchTest {
 		
 		return n;
 	}
-	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public Graph createGraph() {
 		Node.id = 0;
 		
@@ -173,9 +171,9 @@ public class SearchTest {
 		edges.add(new ArrayList<>());
 		edges.get(4).add(new Edge<Integer>(node_4, node_0, 0));
 		edges.get(4).add(new Edge<Integer>(node_4, node_1, 0));
-		edges.get(4).add(new Edge<Integer>(node_4, node_2, 0));
+		edges.get(4).add(new Edge<Integer>(node_4, node_2, 1));
 		edges.get(4).add(new Edge<Integer>(node_4, node_3, 0));
-		edges.get(4).add(new Edge<Integer>(node_4, node_4, 1));
+		edges.get(4).add(new Edge<Integer>(node_4, node_4, 0));
 				
 		return new Graph(nodes, adj, edges, node_0, node_4);
 	}
