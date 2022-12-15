@@ -1,9 +1,18 @@
 import java.util.ArrayList;
 
+/*
+ * Author: Mattia
+ * Date: 09.12.22
+ * 
+ * This class is being used to store any comparable Type T in a heap structure,
+ * providing useful methods to implement both min- and max-heap structures.
+ */
+
 public class Heap<T extends Comparable<T>>{
-	ArrayList<T> H;
-	boolean min;
+	private ArrayList<T> H;
+	private boolean min;
 	
+	/* CONSTRUCTORS */
 	public Heap(ArrayList<T> elements, boolean min) {
 		H = new ArrayList<T>();
 		for (T element : elements)

@@ -3,10 +3,19 @@ import java.util.Stack;
 import java.util.Queue;
 import java.util.LinkedList;
 
+/*
+ * Author: Mattia
+ * Date: 13.12.22
+ * 
+ * All algorithms on unweighted graphs are
+ * being implemented in this class.
+ */
+
 @SuppressWarnings({ "unchecked", "rawtypes" })
 public class Searcher_unweighted {
 	Graph G;
 	
+	/* CONSTRUCTORS */
 	public Searcher_unweighted(ArrayList<Node<Integer>> nodes, ArrayList<ArrayList<Node<Integer>>> adj) {
 		this.G = new Graph(nodes, adj);
 	}

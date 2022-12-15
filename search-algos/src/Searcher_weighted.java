@@ -1,9 +1,18 @@
 import java.util.ArrayList;
 
+/*
+ * Author: Mattia
+ * Date: 13.12.22
+ * 
+ * All algorithms on weighted graphs are
+ * being implemented in this class.
+ */
+
 @SuppressWarnings({"rawtypes", "unchecked"})
 public class Searcher_weighted {
 	Graph G;
 	
+	/* CONSTRUCTORS */
 	public Searcher_weighted(Graph G) {
 		this.G = G;
 	}

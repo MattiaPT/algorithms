@@ -1,9 +1,17 @@
 import java.util.Arrays;
 
+/*
+ * Author: Mattia
+ * Date: 27.11.22
+ * 
+ * All algorithms used to sort arrays are being 
+ * implemented in this class.
+ */
+
 public class Sorter {
 	int[] arr;
 	
-	// CONSTRUCTORS
+	/* CONSTRUCTORS */
 	public Sorter() {
 		this(new int[] {});
 	}

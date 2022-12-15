@@ -1,8 +1,14 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.ArrayList;
 import java.util.Arrays;
-
 import org.junit.jupiter.api.Test;
+
+/*
+ * Author: Mattia
+ * Date: 06.12.22
+ * 
+ * Here tests will be added for every new search algorithm implemented.
+ */
 
 @SuppressWarnings({ "unchecked", "rawtypes" })
 public class SearchTest {

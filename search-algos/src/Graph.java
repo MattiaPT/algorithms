@@ -1,5 +1,13 @@
 import java.util.ArrayList;
 
+/*
+ * Author: Mattia
+ * Date: 13.12.22
+ * 
+ * This class is being used to bundle information about
+ * the structure of a given graph and handles its creation.
+ */
+
 public class Graph<T extends Comparable<T>> {
 	private ArrayList<Node<T>> nodes;
 	private ArrayList<ArrayList<Edge<T>>> edges;
@@ -8,6 +16,7 @@ public class Graph<T extends Comparable<T>> {
 	private Node<T> start;
 	private Node<T> end;
 	
+	/* CONSTRUCTORS */
 	public Graph(ArrayList<Node<T>> nodes, ArrayList<ArrayList<Node<T>>> adj) {
 		this.edges = new ArrayList<ArrayList<Edge<T>>>();;
 		for (int i = 0; i < adj.size(); i++) {
