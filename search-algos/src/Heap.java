@@ -12,6 +12,7 @@ public class Heap<T extends Comparable<T>>{
 	private ArrayList<T> H;
 	private boolean min;
 	
+	
 	/* CONSTRUCTORS */
 	public Heap(ArrayList<T> elements, boolean min) {
 		H = new ArrayList<T>();
@@ -20,6 +21,7 @@ public class Heap<T extends Comparable<T>>{
 		this.min = min;
 		restoreHeapCondition();
 	}
+	
 	
 	public void restoreHeapCondition() {
 		for (int i = this.H.size()/2; i >= 0 ; i--) {
@@ -41,27 +43,25 @@ public class Heap<T extends Comparable<T>>{
 		}
 	}
 	
+	
+	/* HELPER METHODS */
 	public T removeFirst() {
 		T ret = H.remove(0);
 		if (H.size() != 0)
 			restoreHeapCondition();
 		return ret;
 	}
-	
 	public int indexOf(T n) {
 		return H.indexOf(n);
 	}
-	
 	public int size() {
 		return H.size();
 	}
-	
 	public void swap(int i, int j) {
 		T temp = H.get(i);
 		H.set(i, H.get(j));
 		H.set(j, temp);
 	}
-	
 	public String toString() {
 		return this.H + "";
 	}

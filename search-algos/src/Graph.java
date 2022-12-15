@@ -16,6 +16,7 @@ public class Graph<T extends Comparable<T>> {
 	private Node<T> start;
 	private Node<T> end;
 	
+	
 	/* CONSTRUCTORS */
 	public Graph(ArrayList<Node<T>> nodes, ArrayList<ArrayList<Node<T>>> adj) {
 		this.edges = new ArrayList<ArrayList<Edge<T>>>();;
@@ -40,7 +41,8 @@ public class Graph<T extends Comparable<T>> {
 		this.end = end;
 	}
 	
-	/* accessor methods */
+	
+	/* ACCESSOR METHODS */
 	public ArrayList<ArrayList<Node<T>>> getAdjacencyList() {
 		return this.adj;
 	}
@@ -57,6 +59,8 @@ public class Graph<T extends Comparable<T>> {
 		return this.nodes;
 	}
 	
+	
+	/* HELPER METHODS */
 	public String toString() {
 		String adj_str = "adj: ";
 		for (ArrayList<Node<T>> node : this.adj)

@@ -15,10 +15,12 @@ import java.util.LinkedList;
 public class Searcher_unweighted {
 	Graph G;
 	
+	
 	/* CONSTRUCTORS */
 	public Searcher_unweighted(ArrayList<Node<Integer>> nodes, ArrayList<ArrayList<Node<Integer>>> adj) {
 		this.G = new Graph(nodes, adj);
 	}
+	
 
 	/* tests reachability of y from start x using DFS */
 	/* recursively */
@@ -54,7 +56,6 @@ public class Searcher_unweighted {
 		}
 		return false;
 	}
-	
 	
 	
 	/* tests reachability of y from start x using BFS */
@@ -98,6 +99,7 @@ public class Searcher_unweighted {
 		return false;
 	}
 	
+	
 	/* get shortest path from x to y in a graph with unweighted edges using BFS */
 	/* iteratively */
 	public int shortestPathBFSit(Node<Integer> x, Node<Integer> y) {
@@ -130,49 +132,3 @@ public class Searcher_unweighted {
 		return G + "";
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

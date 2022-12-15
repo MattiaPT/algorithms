@@ -12,6 +12,7 @@ import java.util.ArrayList;
 public class Searcher_weighted {
 	Graph G;
 	
+	
 	/* CONSTRUCTORS */
 	public Searcher_weighted(Graph G) {
 		this.G = G;

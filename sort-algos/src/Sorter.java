@@ -11,6 +11,7 @@ import java.util.Arrays;
 public class Sorter {
 	int[] arr;
 	
+	
 	/* CONSTRUCTORS */
 	public Sorter() {
 		this(new int[] {});
@@ -28,6 +29,7 @@ public class Sorter {
 		return true;
 	}
 	
+	
 	/* BUBBLESORT */
 	public void bubbleSort() {
 		for (int i = 0; i < this.arr.length - 1; i++) {
@@ -37,6 +39,7 @@ public class Sorter {
 			i = -1;
 		}
 	}
+	
 	
 	/* SELECTION SORT */
 	public void selectionSort() {
@@ -50,6 +53,7 @@ public class Sorter {
 			swap(i, indexMin);
 		}
 	}
+	
 	
 	/* INSERTION SORT */
 	public void insertionSort() {
@@ -68,6 +72,7 @@ public class Sorter {
 			}
 		}
 	}
+	
 	
 	/* HEAP SORT */
 	public void heapSort() {
@@ -91,6 +96,7 @@ public class Sorter {
 				break;
 		}
 	}
+	
 	
 	/* MERGE SORT */
 	public void mergeSort() {
@@ -128,6 +134,7 @@ public class Sorter {
 			this.arr[i] = B[i-left];
 	}
 	
+	
 	/* QUICK SORT */
 	public void quickSort() {
 		quickSort(0, this.arr.length - 1);
@@ -152,6 +159,7 @@ public class Sorter {
 		swap(l, right);
 		return l;
 	}
+	
 	
 	/* HELPER METHODS */
 	public void swap(int i, int j) {

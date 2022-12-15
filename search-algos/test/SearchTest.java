@@ -14,7 +14,7 @@ import org.junit.jupiter.api.Test;
 public class SearchTest {
 	
 	
-	/* test with unweighted graphs */
+	/* tests with unweighted graphs */
 	
 	@Test
 	public void testReachableDFSrec() {
@@ -96,7 +96,7 @@ public class SearchTest {
 		
 		ArrayList<Node<Integer>> nodes = new ArrayList<Node<Integer>>();
 		/*
-		 *  this array contains the information needed to store an unweighted graph:
+		 *  this array (n) contains the information needed to store an unweighted graph:
 		 *  - Array containing all nodes
 		 *  - Array containing start and end node
 		 *  - all the following entries make up the adjacency array

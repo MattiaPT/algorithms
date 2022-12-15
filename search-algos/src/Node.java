@@ -13,6 +13,7 @@ public class Node<T extends Comparable<T>> implements Comparable<Node<T>>{
 	int index;
 	T value;
 	
+	
 	/* CONSTRUCTORS */
 	public Node(T value) {
 		this.index = id++;
@@ -24,6 +25,8 @@ public class Node<T extends Comparable<T>> implements Comparable<Node<T>>{
 		return ((T) this.value).compareTo((T) other.value);
 	}
 	
+	
+	/* HELPER METHODS */
 	public String toString() {
 		return "(i: " + index + ", v: " + value + ")";
 	}

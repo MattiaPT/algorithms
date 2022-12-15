@@ -12,6 +12,7 @@ public class Edge<T extends Comparable<T>> {
 	
 	int cost;
 	
+	
 	/* CONSTRUCTORS */
 	public Edge(Node<T> start, Node<T> end, int cost) {
 		this.start = start;
@@ -19,7 +20,8 @@ public class Edge<T extends Comparable<T>> {
 		this.cost = cost;
 	}
 	
-	/* accessor methods */
+	
+	/* ACCESSOR METHODS */
 	public int getCost() {
 		return this.cost;
 	}
@@ -28,6 +30,8 @@ public class Edge<T extends Comparable<T>> {
 		return (Node<T>[]) new Object[] {this.start, this.end};
 	}
 	
+	
+	/* HELPER METHODS */
 	public String toString() {
 		return "from " + start + " to " + end + " (" + cost + "); ";
 	}

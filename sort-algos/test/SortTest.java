@@ -1,8 +1,4 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
-
 import org.junit.jupiter.api.Test;
 
 /*
@@ -23,7 +19,6 @@ public class SortTest {
 		s.arr = new int[] {1, 342, 456, 643, 648, 685, 764};
 		assertEquals(true, s.isSorted());
 	}
-	
 	@Test
 	public void testBubblesort() {
 		Sorter s = new Sorter(new int[] {124, 643, 1234, 34, 2, 4, 0, 12});
@@ -34,7 +29,6 @@ public class SortTest {
 		s.bubbleSort();
 		assertEquals(true, s.isSorted());
 	}
-	
 	@Test
 	public void testSelectionsort() {
 		Sorter s = new Sorter(new int[] {124, 643, 1234, 34, 2, 4, 0, 12});
@@ -45,7 +39,6 @@ public class SortTest {
 		s.selectionSort();
 		assertEquals(true, s.isSorted());
 	}
-	
 	@Test
 	public void testInsertionsort() {
 		Sorter s = new Sorter(new int[] {124, 643, 1234, 34, 2, 4, 0, 12});
@@ -56,7 +49,6 @@ public class SortTest {
 		s.insertionSort();
 		assertEquals(true, s.isSorted());
 	}
-
 	@Test
 	public void testHeapSort() {
 		Sorter s = new Sorter(new int[] {124, 643, 1234, 34, 2, 4, 0, 12});
@@ -67,7 +59,6 @@ public class SortTest {
 		s.heapSort();
 		assertEquals(true, s.isSorted());
 	}
-	
 	@Test
 	public void testMergeSort() {
 		Sorter s = new Sorter(new int[] {124, 643, 1234, 34, 2, 4, 0, 12});
@@ -78,7 +69,6 @@ public class SortTest {
 		s.mergeSort();
 		assertEquals(true, s.isSorted());
 	}
-	
 	@Test
 	public void testQuickSort() {
 		Sorter s = new Sorter(new int[] {124, 643, 1234, 34, 2, 4, 0, 12});
