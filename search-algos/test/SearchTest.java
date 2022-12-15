@@ -58,6 +58,17 @@ public class SearchTest {
 		assertEquals(true, s.reachableBFSit(start, end));
 		assertEquals(false, s.reachableBFSit(end, start));
 	}
+	@Test
+	public void testShortestPathBFSit() {
+		ArrayList<ArrayList<Node<Integer>>> a = createArrayList();
+		ArrayList<Node<Integer>> nodes = a.remove(0);
+		ArrayList<Node<Integer>> start_end = a.remove(0);
+		Searcher_unweighted s = new Searcher_unweighted(nodes, a);
+		
+		Node<Integer> start = start_end.get(0);
+		Node<Integer> end = start_end.get(1);
+		assertEquals(true, s.shortestPathBFSit(start, end) == 3);
+	}
 	
 	
 	/* tests with weighted graphs */
@@ -78,6 +89,12 @@ public class SearchTest {
 		Node.id = 0;
 		
 		ArrayList<Node<Integer>> nodes = new ArrayList<Node<Integer>>();
+		/*
+		 *  this array contains the information needed to store an unweighted graph:
+		 *  - Array containing all nodes
+		 *  - Array containing start and end node
+		 *  - all the following entries make up the adjacency array
+		 */
 		ArrayList<ArrayList<Node<Integer>>> n = new ArrayList<ArrayList<Node<Integer>>>();
 		for (int i = 0; i < 9; i++)
 			n.add(new ArrayList<>());
@@ -109,7 +126,6 @@ public class SearchTest {
 		n.get(5).add(node_5);
 		n.get(6).add(node_3);
 		n.get(7).add(node_6);
-		n.get(8).add(node_6);
 		
 		return n;
 	}
