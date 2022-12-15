@@ -18,21 +18,21 @@ public class Searcher_unweighted {
 		boolean[] visited = new boolean[this.G.getAdjacencyList().size()];
 		return reachableDFSrec(x, y, visited);
 	}
+	@SuppressWarnings("unchecked")
 	public boolean reachableDFSrec(Node<Integer> x, Node<Integer> y, boolean[] visited) {
 		visited[x.index] = true;
 		if (x.index == y.index)
 			return true;
 		boolean ret = false;
-		@SuppressWarnings("unchecked")
 		ArrayList<ArrayList<Node<Integer>>> adj = this.G.getAdjacencyList();
 		for (Node<Integer> i : adj.get(x.index))
 			ret = ret || (!visited[i.index] && reachableDFSrec(i, y, visited));
 		return ret;
 	}
 	/* iteratively */
+	@SuppressWarnings("unchecked")
 	public boolean reachableDFSit(Node<Integer> x, Node<Integer> y) {
 		Stack<Node<Integer>> stack = new Stack<Node<Integer>>();
-		@SuppressWarnings("unchecked")
 		ArrayList<ArrayList<Node<Integer>>> adj = this.G.getAdjacencyList();
 		boolean[] visited = new boolean[adj.size()];
 		stack.push(x);
@@ -75,9 +75,9 @@ public class Searcher_unweighted {
 		return helperReachableBFSrec(queue, y, visited);
 	}
 	/* iteratively */
+	@SuppressWarnings("unchecked")
 	public boolean reachableBFSit(Node<Integer> x, Node<Integer> y) {
 		ArrayList<Node<Integer>> queue = new ArrayList<>();
-		@SuppressWarnings("unchecked")
 		ArrayList<ArrayList<Node<Integer>>> adj = this.G.getAdjacencyList();
 		boolean[] visited = new boolean[adj.size()];
 		queue.add(x);

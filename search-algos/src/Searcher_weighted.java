@@ -25,9 +25,6 @@ public class Searcher_weighted {
 		ArrayList<Node<Integer>> S = new ArrayList<>();
 		
 		decreaseKey(H, start, 0);
-		System.out.println(H);
-		System.out.println(S);
-		System.out.println(Arrays.toString(d));
 		while (S.size() != adj.size()) {
 			Node<Integer> v = H.removeFirst();
 			S.add(v);
@@ -35,13 +32,15 @@ public class Searcher_weighted {
 				if (S.contains(adj.get(v.index).get(i)))
 					continue;
 				d[adj.get(v.index).get(i).index] = Math.min(d[adj.get(v.index).get(i).index], d[v.index] + edges.get(adj.get(v.index).get(i).index).get(v.index).cost);
-				decreaseKey(H, S.get(adj.get(v.index).get(i).index), d[adj.get(v.index).get(i).index]);
+				decreaseKey(H, adj.get(v.index).get(i), d[adj.get(v.index).get(i).index]);
 			}
 		}
 		return d;
 	}
-	public void decreaseKey(Heap<Node<Integer>> Heap, Node<Integer> ptr, int value) {
+	public void decreaseKey(Heap<Node<Integer>> H, Node<Integer> ptr, int value) {
 		ptr.value = value;
-		Heap.restoreHeapCondition();
+		System.out.println("in decrease key");
+		H.restoreHeapCondition();
+		System.out.println("out of decrease key");
 	}
 }

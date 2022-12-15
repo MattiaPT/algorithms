@@ -159,23 +159,23 @@ public class SearchTest {
 		edges.get(1).add(new Edge<Integer>(node_1, node_3, 0));
 		edges.get(1).add(new Edge<Integer>(node_1, node_4, 1));
 		edges.add(new ArrayList<>());
-		edges.get(1).add(new Edge<Integer>(node_2, node_0, 0));
-		edges.get(1).add(new Edge<Integer>(node_2, node_1, 0));
-		edges.get(1).add(new Edge<Integer>(node_2, node_2, 0));
-		edges.get(1).add(new Edge<Integer>(node_2, node_3, 1));
-		edges.get(1).add(new Edge<Integer>(node_2, node_4, 0));
+		edges.get(2).add(new Edge<Integer>(node_2, node_0, 0));
+		edges.get(2).add(new Edge<Integer>(node_2, node_1, 0));
+		edges.get(2).add(new Edge<Integer>(node_2, node_2, 0));
+		edges.get(2).add(new Edge<Integer>(node_2, node_3, 1));
+		edges.get(2).add(new Edge<Integer>(node_2, node_4, 0));
 		edges.add(new ArrayList<>());
-		edges.get(1).add(new Edge<Integer>(node_3, node_0, 0));
-		edges.get(1).add(new Edge<Integer>(node_3, node_1, 0));
-		edges.get(1).add(new Edge<Integer>(node_3, node_2, 0));
-		edges.get(1).add(new Edge<Integer>(node_3, node_3, 0));
-		edges.get(1).add(new Edge<Integer>(node_3, node_4, 1));
+		edges.get(3).add(new Edge<Integer>(node_3, node_0, 0));
+		edges.get(3).add(new Edge<Integer>(node_3, node_1, 0));
+		edges.get(3).add(new Edge<Integer>(node_3, node_2, 0));
+		edges.get(3).add(new Edge<Integer>(node_3, node_3, 0));
+		edges.get(3).add(new Edge<Integer>(node_3, node_4, 1));
 		edges.add(new ArrayList<>());
-		edges.get(1).add(new Edge<Integer>(node_4, node_0, 0));
-		edges.get(1).add(new Edge<Integer>(node_4, node_1, 0));
-		edges.get(1).add(new Edge<Integer>(node_4, node_2, 0));
-		edges.get(1).add(new Edge<Integer>(node_4, node_3, 0));
-		edges.get(1).add(new Edge<Integer>(node_4, node_4, 1));
+		edges.get(4).add(new Edge<Integer>(node_4, node_0, 0));
+		edges.get(4).add(new Edge<Integer>(node_4, node_1, 0));
+		edges.get(4).add(new Edge<Integer>(node_4, node_2, 0));
+		edges.get(4).add(new Edge<Integer>(node_4, node_3, 0));
+		edges.get(4).add(new Edge<Integer>(node_4, node_4, 1));
 				
 		return new Graph(nodes, adj, edges, node_0, node_4);
 	}

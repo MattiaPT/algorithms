@@ -8,12 +8,12 @@ public class Graph<T extends Comparable<T>> {
 	private Node<T> start;
 	private Node<T> end;
 	
-	@SuppressWarnings("unchecked")
 	public Graph(ArrayList<Node<T>> nodes, ArrayList<ArrayList<Node<T>>> adj) {
 		this.edges = new ArrayList<ArrayList<Edge<T>>>();;
 		for (int i = 0; i < adj.size(); i++) {
+			this.edges.add(new ArrayList<Edge<T>>());
 			for (int j = 0; j < adj.get(i).size(); j++)
-				this.edges.get(i).set(adj.get(i).get(j).index, new Edge<T>(nodes.get(i), nodes.get(adj.get(i).get(j).index), 1));
+				this.edges.get(i).add(new Edge<T>(nodes.get(i), nodes.get(adj.get(i).get(j).index), 1));
 		}
 		this.nodes = nodes;
 		this.adj = adj;
