@@ -21,10 +21,10 @@ public class Heap<T extends Comparable<T>>{
 	}
 	public void restoreHeapCondition(int i) {
 		for (int j = i; j < H.size();) {
-			if (j*2+1 < this.H.size() && (0 <= this.H.get(2*j+1).compareTo(this.H.get(j)) && (j*2+2 == this.H.size() || 0 <= this.H.get(2*j+1).compareTo(this.H.get(2*j+2))))) {
+			if (j*2+1 < this.H.size() && (0 >= this.H.get(2*j+1).compareTo(this.H.get(j)) && (j*2+2 == this.H.size() || 0 >= this.H.get(2*j+1).compareTo(this.H.get(2*j+2))))) {
 				swap(j, j*2+1);
 				j = 2*j + 1;
-			} else if (j*2+2 < this.H.size() && 0 <= this.H.get(j*2+2).compareTo(this.H.get(2*j+1)) && 0 <= this.H.get((j+1)*2).compareTo(this.H.get(j)) ) {
+			} else if (j*2+2 < this.H.size() && 0 >= this.H.get(j*2+2).compareTo(this.H.get(2*j+1)) && 0 >= this.H.get((j+1)*2).compareTo(this.H.get(j)) ) {
 				swap(j, j*2+2);
 				j = 2*j + 2;
 			} else
@@ -34,7 +34,8 @@ public class Heap<T extends Comparable<T>>{
 	
 	public T removeFirst() {
 		T ret = H.remove(0);
-		restoreHeapCondition();
+		if (H.size() != 0)
+			restoreHeapCondition();
 		return ret;
 	}
 	
