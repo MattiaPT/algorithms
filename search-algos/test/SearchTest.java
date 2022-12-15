@@ -1,5 +1,6 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import org.junit.jupiter.api.Test;
 
@@ -68,7 +69,9 @@ public class SearchTest {
 		
 		Node<Integer> start = G.getStart();
 		
-		assertEquals(true, s.dijkstra(start)[G.getAdjacencyList().size() - 1] == 4);
+		int[] ret = s.dijkstra(start);
+		int[] corr = new int[] {0, 4, 2, 3, 4};
+		assertEquals(true, Arrays.equals(ret, corr));
 	}
 	
 	public ArrayList<ArrayList<Node<Integer>>> createArrayList() {

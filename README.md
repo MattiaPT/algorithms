@@ -9,9 +9,11 @@ and playing around with algorithms learnt in the *algorithms & datastructures* l
 - Merge Sort
 - Quick Sort
 
-## Search Algorithms (in unweighted graphs)
+## Search Algorithms
+### in unweighted graphs:
 - DFS: Test Reachability, (in progress)
 - BFS: Test Reachability, (in progress)
 
-## Search Algorithms (in weighted graphs)
+### in weighted graphs:
 - Dijkstra (shortest path algorithm)
+- (in progress)

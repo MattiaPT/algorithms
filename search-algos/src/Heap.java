@@ -39,6 +39,10 @@ public class Heap<T extends Comparable<T>>{
 		return ret;
 	}
 	
+	public int indexOf(T n) {
+		return H.indexOf(n);
+	}
+	
 	public int size() {
 		return H.size();
 	}

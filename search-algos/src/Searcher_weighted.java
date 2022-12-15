@@ -37,6 +37,6 @@ public class Searcher_weighted {
 	}
 	public void decreaseKey(Heap<Node<Integer>> H, Node<Integer> ptr, int value) {
 		ptr.value = value;
-		H.restoreHeapCondition();
+		H.restoreHeapCondition(H.indexOf(ptr));
 	}
 }
