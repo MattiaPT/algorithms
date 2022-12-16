@@ -10,43 +10,50 @@ import java.util.ArrayList;
 
 @SuppressWarnings({"rawtypes", "unchecked"})
 public class Searcher_weighted {
-	Graph G;
+	Graph graph;
 	
 	
 	/* CONSTRUCTORS */
-	public Searcher_weighted(Graph G) {
-		this.G = G;
+	public Searcher_weighted(Graph graph) {
+		this.graph = graph;
 	}
-	public Searcher_weighted(ArrayList<Node<Integer>> nodes, ArrayList<ArrayList<Integer>> adj, ArrayList<ArrayList<Edge<Integer>>> edges) {
-		this.G = new Graph(nodes, adj, edges);
+	public Searcher_weighted(ArrayList<Node<Integer>> nodes, ArrayList<ArrayList<Integer>> adjacencyList, ArrayList<ArrayList<Edge<Integer>>> edges) {
+		this.graph = new Graph(nodes, adjacencyList, edges);
 	}
 	
 	/* shortest path tree using Dijkstra */
 	public int[] dijkstra(Node<Integer> start) {
-		ArrayList<ArrayList<Node<Integer>>> adj = G.getAdjacencyList();
-		ArrayList<ArrayList<Edge<Integer>>> edges = G.getEdges();
-		int[] d = new int[adj.size()];
-		for (int i = 0; i < d.length; i++)
-			d[i] = (i == start.index)? 0: Integer.MAX_VALUE;
+		ArrayList<ArrayList<Node<Integer>>> adjacencyList = graph.getAdjacencyList();
+		ArrayList<ArrayList<Edge<Integer>>> edges = graph.getEdges();
+		int[] distances = new int[adjacencyList.size()];
+		for (int i = 0; i < distances.length; i++)
+			distances[i] = (i == start.getIndex())? 0: Integer.MAX_VALUE;
 		
-		Heap<Node<Integer>> H = new Heap<Node<Integer>>(G.getNodes(), -1);
-		ArrayList<Node<Integer>> S = new ArrayList<>();
+		Heap<Node<Integer>> heap = new Heap<Node<Integer>>(graph.getNodes(), -1);
+		ArrayList<Node<Integer>> shortestPathFound = new ArrayList<>();
 		
-		decreaseKey(H, start, 0);
-		while (S.size() != adj.size()) {
-			Node<Integer> v = H.removeFirst();
-			S.add(v);
-			for (int i = 0; i < adj.get(v.index).size(); i++) {
-				if (S.contains(adj.get(v.index).get(i)))
+		decreaseKey(heap, start, 0);
+		while (shortestPathFound.size() != adjacencyList.size()) {
+			Node<Integer> current = heap.removeFirst();
+			shortestPathFound.add(current);
+			for (int i = 0; i < adjacencyList.get(current.getIndex()).size(); i++) {
+				if (shortestPathFound.contains(adjacencyList.get(current.getIndex()).get(i)))
 					continue;
-				d[adj.get(v.index).get(i).index] = Math.min(d[adj.get(v.index).get(i).index], d[v.index] + edges.get(v.index).get(adj.get(v.index).get(i).index).cost);
-				decreaseKey(H, adj.get(v.index).get(i), d[adj.get(v.index).get(i).index]);
+				distances[adjacencyList.get(current.getIndex()).get(i).getIndex()] = 
+						Math.min(distances[adjacencyList.get(current.getIndex()).get(i).getIndex()], 
+								distances[current.getIndex()] + edges.get(current.getIndex()).get(adjacencyList.get(current.getIndex()).get(i).getIndex()).getCost());
+				decreaseKey(heap, adjacencyList.get(current.getIndex()).get(i), distances[adjacencyList.get(current.getIndex()).get(i).getIndex()]);
 			}
 		}
-		return d;
+		return distances;
 	}
-	public void decreaseKey(Heap<Node<Integer>> H, Node<Integer> ptr, int value) {
-		ptr.value = value;
-		H.restoreHeapCondition(H.indexOf(ptr));
+	public void decreaseKey(Heap<Node<Integer>> heap, Node<Integer> pointerToNode, int value) {
+		pointerToNode.value = value;
+		heap.restoreHeapCondition(heap.indexOf(pointerToNode));
+	}
+	
+	/* shortest path tree using Bellman Ford */
+	public int[] bellmanford(Node<Integer> start) {
+		return new int[] {};
 	}
 }

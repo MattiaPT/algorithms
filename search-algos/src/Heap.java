@@ -6,36 +6,43 @@ import java.util.ArrayList;
  * 
  * This class is being used to store any comparable Type T in a heap structure,
  * providing useful methods to implement both min- and max-heap structures.
+ * -> the type attribute can either be set to -1, or to 1:
+ *    -1 -> min-heap structure
+ *     1 -> max-heap structure
  */
 
 public class Heap<T extends Comparable<T>>{
-	private ArrayList<T> H;
+	private ArrayList<T> heap;
 	private int type;
 	
 	
 	/* CONSTRUCTORS */
 	public Heap(ArrayList<T> elements, int type) {
-		H = new ArrayList<T>();
+		heap = new ArrayList<T>();
 		for (T element : elements)
-			H.add(element);
+			heap.add(element);
 		this.type = type;
 		restoreHeapCondition();
 	}
 	
 	
 	public void restoreHeapCondition() {
-		for (int i = this.H.size()/2; i >= 0 ; i--) {
+		for (int i = heap.size()/2; i >= 0 ; i--) {
 			restoreHeapCondition(i);
-			if (0 < this.H.get(0).compareTo(this.H.get(i)))
+			if (0 < heap.get(0).compareTo(heap.get(i)))
 				swap(0, i);
 		}
 	}
 	public void restoreHeapCondition(int i) {
-		for (int j = i; j < H.size();) {
-			if (j*2+1 < this.H.size() && (0 <= type*this.H.get(2*j+1).compareTo(this.H.get(j)) && (j*2+2 == this.H.size() || 0 <= type*this.H.get(2*j+1).compareTo(this.H.get(2*j+2))))) {
+		for (int j = i; j < heap.size();) {
+			if (j*2+1 < heap.size() && 
+					(0 <= type*heap.get(2*j+1).compareTo(heap.get(j)) && 
+					(j*2+2 == heap.size() || 0 <= type*heap.get(2*j+1).compareTo(heap.get(2*j+2))))) {
 				swap(j, j*2+1);
 				j = 2*j + 1;
-			} else if (j*2+2 < this.H.size() && 0 <= type*this.H.get(j*2+2).compareTo(this.H.get(2*j+1)) && 0 <= type*this.H.get((j+1)*2).compareTo(this.H.get(j)) ) {
+			} else if (j*2+2 < heap.size() && 
+					0 <= type*heap.get(j*2+2).compareTo(heap.get(2*j+1)) &&
+					0 <= type*heap.get((j+1)*2).compareTo(heap.get(j))) {
 				swap(j, j*2+2);
 				j = 2*j + 2;
 			} else
@@ -46,23 +53,23 @@ public class Heap<T extends Comparable<T>>{
 	
 	/* HELPER METHODS */
 	public T removeFirst() {
-		T ret = H.remove(0);
-		if (H.size() != 0)
+		T ret = heap.remove(0);
+		if (heap.size() != 0)
 			restoreHeapCondition();
 		return ret;
 	}
 	public int indexOf(T n) {
-		return H.indexOf(n);
+		return heap.indexOf(n);
 	}
 	public int size() {
-		return H.size();
+		return heap.size();
 	}
 	public void swap(int i, int j) {
-		T temp = H.get(i);
-		H.set(i, H.get(j));
-		H.set(j, temp);
+		T temp = heap.get(i);
+		heap.set(i, heap.get(j));
+		heap.set(j, temp);
 	}
 	public String toString() {
-		return this.H + "";
+		return heap + "";
 	}
 }

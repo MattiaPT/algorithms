@@ -10,7 +10,7 @@ public class Edge<T extends Comparable<T>> {
 	private Node<T> start;
 	private Node<T> end;
 	
-	int cost;
+	private int cost;
 	
 	
 	/* CONSTRUCTORS */
@@ -23,11 +23,13 @@ public class Edge<T extends Comparable<T>> {
 	
 	/* ACCESSOR METHODS */
 	public int getCost() {
-		return this.cost;
+		return cost;
 	}
-	@SuppressWarnings("unchecked")
-	public Node<T>[] getStartEnd() {
-		return (Node<T>[]) new Object[] {this.start, this.end};
+	public Node<T> getStart() {
+		return start;
+	}
+	public Node<T> getEnd() {
+		return end;
 	}
 	
 	

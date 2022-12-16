@@ -8,9 +8,9 @@
  */
 
 public class Node<T extends Comparable<T>> implements Comparable<Node<T>>{
-	static int id;
+	private static int id;
 	
-	int index;
+	private int index;
 	T value;
 	
 	
@@ -23,6 +23,19 @@ public class Node<T extends Comparable<T>> implements Comparable<Node<T>>{
 	@Override
 	public int compareTo(Node<T> other) {
 		return ((T) this.value).compareTo((T) other.value);
+	}
+	
+	
+	/* MUTATOR METHODS */
+	public static void setId(int id) {
+		Node.id = id;
+	}
+	/* ACCESSOR METHODS */
+	public int getIndex() {
+		return index;
+	}
+	public T getValue() {
+		return value;
 	}
 	
 	

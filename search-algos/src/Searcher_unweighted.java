@@ -13,45 +13,45 @@ import java.util.LinkedList;
 
 @SuppressWarnings({ "unchecked", "rawtypes" })
 public class Searcher_unweighted {
-	Graph G;
+	Graph graph;
 	
 	
 	/* CONSTRUCTORS */
-	public Searcher_unweighted(ArrayList<Node<Integer>> nodes, ArrayList<ArrayList<Node<Integer>>> adj) {
-		this.G = new Graph(nodes, adj);
+	public Searcher_unweighted(ArrayList<Node<Integer>> nodes, ArrayList<ArrayList<Node<Integer>>> adjacencyList) {
+		graph = new Graph(nodes, adjacencyList);
 	}
 	
 
 	/* tests reachability of y from start x using DFS */
 	/* recursively */
-	public boolean reachableDFSrec(Node<Integer> x, Node<Integer> y) {
-		boolean[] visited = new boolean[this.G.getAdjacencyList().size()];
-		return reachableDFSrec(x, y, visited);
+	public boolean reachableDFSrec(Node<Integer> start, Node<Integer> end) {
+		boolean[] visited = new boolean[graph.getNodes().size()];
+		return reachableDFSrec(start, end, visited);
 	}
-	public boolean reachableDFSrec(Node<Integer> x, Node<Integer> y, boolean[] visited) {
-		visited[x.index] = true;
-		if (x.index == y.index)
+	public boolean reachableDFSrec(Node<Integer> current, Node<Integer> end, boolean[] visited) {
+		visited[current.getIndex()] = true;
+		if (current.getIndex() == end.getIndex())
 			return true;
-		boolean ret = false;
-		ArrayList<ArrayList<Node<Integer>>> adj = this.G.getAdjacencyList();
-		for (Node<Integer> i : adj.get(x.index))
-			ret = ret || (!visited[i.index] && reachableDFSrec(i, y, visited));
-		return ret;
+		boolean foundEnd = false;
+		ArrayList<ArrayList<Node<Integer>>> adjacencyList = graph.getAdjacencyList();
+		for (Node<Integer> neighbour : adjacencyList.get(current.getIndex()))
+			foundEnd = foundEnd || (!visited[neighbour.getIndex()] && reachableDFSrec(neighbour, end, visited));
+		return foundEnd;
 	}
 	/* iteratively */
-	public boolean reachableDFSit(Node<Integer> x, Node<Integer> y) {
+	public boolean reachableDFSit(Node<Integer> start, Node<Integer> end) {
 		Stack<Node<Integer>> stack = new Stack<Node<Integer>>();
-		ArrayList<ArrayList<Node<Integer>>> adj = this.G.getAdjacencyList();
-		boolean[] visited = new boolean[adj.size()];
-		stack.push(x);
+		ArrayList<ArrayList<Node<Integer>>> adjacencyList = graph.getAdjacencyList();
+		boolean[] visited = new boolean[graph.getNodes().size()];
+		stack.push(start);
 		while (stack.size() != 0) {
-			Node<Integer> p = stack.pop();
-			visited[p.index] = true;
-			if (p.index == y.index)
+			Node<Integer> current = stack.pop();
+			visited[current.getIndex()] = true;
+			if (current.getIndex() == end.getIndex())
 				return true;
-			for (int i = 0; i < adj.get(p.index).size(); i++) {
-				if (!visited[adj.get(p.index).get(i).index])
-					stack.push(adj.get(p.index).get(i));
+			for (int i = 0; i < adjacencyList.get(current.getIndex()).size(); i++) {
+				if (!visited[adjacencyList.get(current.getIndex()).get(i).getIndex()])
+					stack.push(adjacencyList.get(current.getIndex()).get(i));
 			}
 		}
 		return false;
@@ -60,40 +60,40 @@ public class Searcher_unweighted {
 	
 	/* tests reachability of y from start x using BFS */
 	/* recursively */
-	public boolean reachableBFSrec(Node<Integer> x, Node<Integer> y) {
+	public boolean reachableBFSrec(Node<Integer> start, Node<Integer> end) {
 		Queue<Node<Integer>> queue = new LinkedList<Node<Integer>>();
-		boolean[] visited = new boolean[this.G.getAdjacencyList().size()];
-		queue.add(x);
-		return helperReachableBFSrec(queue, y, visited);
+		boolean[] visited = new boolean[graph.getNodes().size()];
+		queue.add(start);
+		return helperReachableBFSrec(queue, end, visited);
 	}
-	public boolean helperReachableBFSrec(Queue<Node<Integer>> queue, Node<Integer> y, boolean[] visited) {
-		if (queue.size() == 0)
+	public boolean helperReachableBFSrec(Queue<Node<Integer>> queue, Node<Integer> end, boolean[] visited) {
+		if (queue.isEmpty())
 			return false;
-		Node<Integer> p = queue.remove();
-		visited[p.index] = true;
-		if (p.index == y.index)
+		Node<Integer> current = queue.remove();
+		visited[current.getIndex()] = true;
+		if (current.getIndex() == end.getIndex())
 			return true;
-		ArrayList<ArrayList<Node<Integer>>> adj = this.G.getAdjacencyList();
-		for (int i = 0; i < adj.get(p.index).size(); i++) {
-			if (!visited[adj.get(p.index).get(i).index])
-				queue.add(adj.get(p.index).get(i));
+		ArrayList<ArrayList<Node<Integer>>> adjacencyList = graph.getAdjacencyList();
+		for (int i = 0; i < adjacencyList.get(current.getIndex()).size(); i++) {
+			if (!visited[adjacencyList.get(current.getIndex()).get(i).getIndex()])
+				queue.add(adjacencyList.get(current.getIndex()).get(i));
 		}
-		return helperReachableBFSrec(queue, y, visited);
+		return helperReachableBFSrec(queue, end, visited);
 	}
 	/* iteratively */
-	public boolean reachableBFSit(Node<Integer> x, Node<Integer> y) {
-		ArrayList<Node<Integer>> queue = new ArrayList<>();
-		ArrayList<ArrayList<Node<Integer>>> adj = this.G.getAdjacencyList();
-		boolean[] visited = new boolean[adj.size()];
-		queue.add(x);
-		while (queue.size() != 0) {
-			Node<Integer> p = queue.remove(0);
-			visited[p.index] = true;
-			if (p.index == y.index)
+	public boolean reachableBFSit(Node<Integer> start, Node<Integer> end) {
+		Queue<Node<Integer>> queue = new LinkedList<Node<Integer>>();
+		ArrayList<ArrayList<Node<Integer>>> adjacencyList = graph.getAdjacencyList();
+		boolean[] visited = new boolean[graph.getNodes().size()];
+		queue.add(start);
+		while (!queue.isEmpty()) {
+			Node<Integer> current = queue.remove();
+			visited[current.getIndex()] = true;
+			if (current.getIndex() == end.getIndex())
 				return true;
-			for (int i = 0; i < adj.get(p.index).size(); i++) {
-				if (!visited[adj.get(p.index).get(i).index])
-					queue.add(adj.get(p.index).get(i));
+			for (int i = 0; i < adjacencyList.get(current.getIndex()).size(); i++) {
+				if (!visited[adjacencyList.get(current.getIndex()).get(i).getIndex()])
+					queue.add(adjacencyList.get(current.getIndex()).get(i));
 			}
 		}
 		return false;
@@ -102,24 +102,24 @@ public class Searcher_unweighted {
 	
 	/* get shortest path from x to y in a graph with unweighted edges using BFS */
 	/* iteratively */
-	public int shortestPathBFSit(Node<Integer> x, Node<Integer> y) {
-		ArrayList<Node<Integer>> queue = new ArrayList<Node<Integer>>();
-		ArrayList<Integer> distance = new ArrayList<Integer>();
-		ArrayList<ArrayList<Node<Integer>>> adj = this.G.getAdjacencyList();
-		boolean[] visited = new boolean[adj.size()];
+	public int shortestPathBFSit(Node<Integer> start, Node<Integer> end) {
+		Queue<Node<Integer>> queue = new LinkedList<Node<Integer>>();
+		Queue<Integer> distances = new LinkedList<Integer>();
+		ArrayList<ArrayList<Node<Integer>>> adjacencyList = graph.getAdjacencyList();
+		boolean[] visited = new boolean[graph.getNodes().size()];
 		
-		queue.add(x);
-		distance.add(0);
-		while (queue.size() != 0) {
-			Node<Integer> p = queue.remove(0);
-			if (p.index == y.index)
-				return distance.get(0);
-			int dist = distance.remove(0);
-			visited[p.index] = true;
-			for (int i = 0; i < adj.get(p.index).size(); i++) {
-				if (!visited[adj.get(p.index).get(i).index]) {
-					queue.add(adj.get(p.index).get(i));
-					distance.add(dist+1);
+		queue.add(start);
+		distances.add(0);
+		while (!queue.isEmpty()) {
+			Node<Integer> current = queue.remove();
+			if (current.getIndex() == end.getIndex())
+				return distances.remove();
+			int distance = distances.remove();
+			visited[current.getIndex()] = true;
+			for (int i = 0; i < adjacencyList.get(current.getIndex()).size(); i++) {
+				if (!visited[adjacencyList.get(current.getIndex()).get(i).getIndex()]) {
+					queue.add(adjacencyList.get(current.getIndex()).get(i));
+					distances.add(distance + 1);
 				}
 			}
 		}
@@ -129,6 +129,6 @@ public class Searcher_unweighted {
 	
 	/* HELPER METHODS */
 	public String toString() {
-		return G + "";
+		return graph + "";
 	}
 }

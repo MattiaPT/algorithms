@@ -18,62 +18,62 @@ public class SearchTest {
 	
 	@Test
 	public void testReachableDFSrec() {
-		ArrayList<ArrayList<Node<Integer>>> a = createArrayList();
-		ArrayList<Node<Integer>> nodes = a.remove(0);
-		ArrayList<Node<Integer>> start_end = a.remove(0);
-		Searcher_unweighted s = new Searcher_unweighted(nodes, a);
+		ArrayList<ArrayList<Node<Integer>>> data = createArrayList();
+		ArrayList<Node<Integer>> nodes = data.remove(0);
+		ArrayList<Node<Integer>> start_end = data.remove(0);
+		Searcher_unweighted searcher = new Searcher_unweighted(nodes, data);
 		
 		Node<Integer> start = start_end.get(0);
 		Node<Integer> end = start_end.get(1);
-		assertEquals(true, s.reachableDFSrec(start, end));
-		assertEquals(false, s.reachableDFSrec(end, start));
+		assertEquals(true, searcher.reachableDFSrec(start, end));
+		assertEquals(false, searcher.reachableDFSrec(end, start));
 	}
 	@Test
 	public void testReachableDFSit() {
-		ArrayList<ArrayList<Node<Integer>>> a = createArrayList();
-		ArrayList<Node<Integer>> nodes = a.remove(0);
-		ArrayList<Node<Integer>> start_end = a.remove(0);
-		Searcher_unweighted s = new Searcher_unweighted(nodes, a);
+		ArrayList<ArrayList<Node<Integer>>> data = createArrayList();
+		ArrayList<Node<Integer>> nodes = data.remove(0);
+		ArrayList<Node<Integer>> start_end = data.remove(0);
+		Searcher_unweighted searcher = new Searcher_unweighted(nodes, data);
 		
 		Node<Integer> start = start_end.get(0);
 		Node<Integer> end = start_end.get(1);
-		assertEquals(true, s.reachableDFSit(start, end));
-		assertEquals(false, s.reachableDFSit(end, start));
+		assertEquals(true, searcher.reachableDFSit(start, end));
+		assertEquals(false, searcher.reachableDFSit(end, start));
 	}
 	@Test
 	public void testReachableBFSrec() {
-		ArrayList<ArrayList<Node<Integer>>> a = createArrayList();
-		ArrayList<Node<Integer>> nodes = a.remove(0);
-		ArrayList<Node<Integer>> start_end = a.remove(0);
-		Searcher_unweighted s = new Searcher_unweighted(nodes, a);
+		ArrayList<ArrayList<Node<Integer>>> data = createArrayList();
+		ArrayList<Node<Integer>> nodes = data.remove(0);
+		ArrayList<Node<Integer>> start_end = data.remove(0);
+		Searcher_unweighted searcher = new Searcher_unweighted(nodes, data);
 		
 		Node<Integer> start = start_end.get(0);
 		Node<Integer> end = start_end.get(1);
-		assertEquals(true, s.reachableBFSrec(start, end));
-		assertEquals(false, s.reachableBFSrec(end, start));
+		assertEquals(true, searcher.reachableBFSrec(start, end));
+		assertEquals(false, searcher.reachableBFSrec(end, start));
 	}
 	@Test
 	public void testReachableBFSit() {
-		ArrayList<ArrayList<Node<Integer>>> a = createArrayList();
-		ArrayList<Node<Integer>> nodes = a.remove(0);
-		ArrayList<Node<Integer>> start_end = a.remove(0);
-		Searcher_unweighted s = new Searcher_unweighted(nodes, a);
+		ArrayList<ArrayList<Node<Integer>>> data = createArrayList();
+		ArrayList<Node<Integer>> nodes = data.remove(0);
+		ArrayList<Node<Integer>> start_end = data.remove(0);
+		Searcher_unweighted searcher = new Searcher_unweighted(nodes, data);
 		
 		Node<Integer> start = start_end.get(0);
 		Node<Integer> end = start_end.get(1);
-		assertEquals(true, s.reachableBFSit(start, end));
-		assertEquals(false, s.reachableBFSit(end, start));
+		assertEquals(true, searcher.reachableBFSit(start, end));
+		assertEquals(false, searcher.reachableBFSit(end, start));
 	}
 	@Test
 	public void testShortestPathBFSit() {
-		ArrayList<ArrayList<Node<Integer>>> a = createArrayList();
-		ArrayList<Node<Integer>> nodes = a.remove(0);
-		ArrayList<Node<Integer>> start_end = a.remove(0);
-		Searcher_unweighted s = new Searcher_unweighted(nodes, a);
+		ArrayList<ArrayList<Node<Integer>>> data = createArrayList();
+		ArrayList<Node<Integer>> nodes = data.remove(0);
+		ArrayList<Node<Integer>> start_end = data.remove(0);
+		Searcher_unweighted searcher = new Searcher_unweighted(nodes, data);
 		
 		Node<Integer> start = start_end.get(0);
 		Node<Integer> end = start_end.get(1);
-		assertEquals(true, s.shortestPathBFSit(start, end) == 3);
+		assertEquals(true, searcher.shortestPathBFSit(start, end) == 3);
 	}
 	
 	
@@ -81,29 +81,29 @@ public class SearchTest {
 	
 	@Test
 	public void testDijkstra() {
-		Graph<Integer> G = createGraph();
-		Searcher_weighted s = new Searcher_weighted(G);
+		Graph<Integer> graph = createGraph1();
+		Searcher_weighted searcher = new Searcher_weighted(graph);
 		
-		Node<Integer> start = G.getStart();
+		Node<Integer> start = graph.getStart();
 		
-		int[] ret = s.dijkstra(start);
-		int[] corr = new int[] {0, 4, 2, 3, 4};
-		assertEquals(true, Arrays.equals(ret, corr));
+		int[] distances = searcher.dijkstra(start);
+		int[] correct = new int[] {0, 4, 2, 3, 4};
+		assertEquals(true, Arrays.equals(distances, correct));
 	}
 	
 	public ArrayList<ArrayList<Node<Integer>>> createArrayList() {
-		Node.id = 0;
+		Node.setId(0);
 		
 		ArrayList<Node<Integer>> nodes = new ArrayList<Node<Integer>>();
 		/*
-		 *  this array (n) contains the information needed to store an unweighted graph:
+		 *  this array (data) contains the information needed to store an unweighted graph:
 		 *  - Array containing all nodes
 		 *  - Array containing start and end node
 		 *  - all the following entries make up the adjacency array
 		 */
-		ArrayList<ArrayList<Node<Integer>>> n = new ArrayList<ArrayList<Node<Integer>>>();
+		ArrayList<ArrayList<Node<Integer>>> data = new ArrayList<ArrayList<Node<Integer>>>();
 		for (int i = 0; i < 9; i++)
-			n.add(new ArrayList<>());
+			data.add(new ArrayList<>());
 		
 		Node<Integer> node_0 = new Node<Integer>(0);
 		Node<Integer> node_1 = new Node<Integer>(1);
@@ -119,24 +119,29 @@ public class SearchTest {
 		nodes.add(node_4);
 		nodes.add(node_5);
 		nodes.add(node_6);
-		n.set(0, nodes);
+		data.set(0, nodes);
 		
-		n.get(1).add(node_0);
-		n.get(1).add(node_6);
+		data.get(1).add(node_0);
+		data.get(1).add(node_6);
 		
-		n.get(2).add(node_3);
-		n.get(3).add(node_0);
-		n.get(3).add(node_3);
-		n.get(4).add(node_1);
-		n.get(4).add(node_4);
-		n.get(5).add(node_5);
-		n.get(6).add(node_3);
-		n.get(7).add(node_6);
+		data.get(2).add(node_3);
+		data.get(3).add(node_0);
+		data.get(3).add(node_3);
+		data.get(4).add(node_1);
+		data.get(4).add(node_4);
+		data.get(5).add(node_5);
+		data.get(6).add(node_3);
+		data.get(7).add(node_6);
 		
-		return n;
+		return data;
 	}
-	public Graph createGraph() {
-		Node.id = 0;
+	public Graph createGraph1() {
+		/* 
+		 * creates a weighted graph with non-negative 
+		 * edge-costs and no cycles
+		 */
+		
+		Node.setId(0);
 		
 		ArrayList<Node<Integer>> nodes = new ArrayList<Node<Integer>>();
 		ArrayList<ArrayList<Node<Integer>>> adj = new ArrayList<ArrayList<Node<Integer>>>();
