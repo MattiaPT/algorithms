@@ -10,15 +10,15 @@ import java.util.ArrayList;
 
 public class Heap<T extends Comparable<T>>{
 	private ArrayList<T> H;
-	private boolean min;
+	private int type;
 	
 	
 	/* CONSTRUCTORS */
-	public Heap(ArrayList<T> elements, boolean min) {
+	public Heap(ArrayList<T> elements, int type) {
 		H = new ArrayList<T>();
 		for (T element : elements)
 			H.add(element);
-		this.min = min;
+		this.type = type;
 		restoreHeapCondition();
 	}
 	
@@ -32,10 +32,10 @@ public class Heap<T extends Comparable<T>>{
 	}
 	public void restoreHeapCondition(int i) {
 		for (int j = i; j < H.size();) {
-			if (j*2+1 < this.H.size() && (0 >= this.H.get(2*j+1).compareTo(this.H.get(j)) && (j*2+2 == this.H.size() || 0 >= this.H.get(2*j+1).compareTo(this.H.get(2*j+2))))) {
+			if (j*2+1 < this.H.size() && (0 <= type*this.H.get(2*j+1).compareTo(this.H.get(j)) && (j*2+2 == this.H.size() || 0 <= type*this.H.get(2*j+1).compareTo(this.H.get(2*j+2))))) {
 				swap(j, j*2+1);
 				j = 2*j + 1;
-			} else if (j*2+2 < this.H.size() && 0 >= this.H.get(j*2+2).compareTo(this.H.get(2*j+1)) && 0 >= this.H.get((j+1)*2).compareTo(this.H.get(j)) ) {
+			} else if (j*2+2 < this.H.size() && 0 <= type*this.H.get(j*2+2).compareTo(this.H.get(2*j+1)) && 0 <= type*this.H.get((j+1)*2).compareTo(this.H.get(j)) ) {
 				swap(j, j*2+2);
 				j = 2*j + 2;
 			} else

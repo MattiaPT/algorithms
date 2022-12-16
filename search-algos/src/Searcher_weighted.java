@@ -29,7 +29,7 @@ public class Searcher_weighted {
 		for (int i = 0; i < d.length; i++)
 			d[i] = (i == start.index)? 0: Integer.MAX_VALUE;
 		
-		Heap<Node<Integer>> H = new Heap<Node<Integer>>(G.getNodes(), false);
+		Heap<Node<Integer>> H = new Heap<Node<Integer>>(G.getNodes(), -1);
 		ArrayList<Node<Integer>> S = new ArrayList<>();
 		
 		decreaseKey(H, start, 0);
