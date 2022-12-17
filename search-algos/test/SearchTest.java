@@ -90,6 +90,18 @@ public class SearchTest {
 		int[] correct = new int[] {0, 4, 2, 3, 4};
 		assertEquals(true, Arrays.equals(distances, correct));
 	}
+	@Test
+	public void testBellmanFord() {
+		Graph<Integer> graph = createGraph1();
+		Searcher_weighted searcher = new Searcher_weighted(graph);
+		
+		Node<Integer> start = graph.getStart();
+		
+		int[] distances = searcher.bellmanford(start);
+		int[] correct = new int[] {0, 4, 2, 3, 4};
+		System.out.println(Arrays.toString(distances));
+		assertEquals(true, Arrays.equals(distances, correct));
+	}
 	
 	public ArrayList<ArrayList<Node<Integer>>> createArrayList() {
 		Node.setId(0);

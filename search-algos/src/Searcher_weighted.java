@@ -25,7 +25,7 @@ public class Searcher_weighted {
 	public int[] dijkstra(Node<Integer> start) {
 		ArrayList<ArrayList<Node<Integer>>> adjacencyList = graph.getAdjacencyList();
 		ArrayList<ArrayList<Edge<Integer>>> edges = graph.getEdges();
-		int[] distances = new int[adjacencyList.size()];
+		int[] distances = new int[graph.getNodes().size()];
 		for (int i = 0; i < distances.length; i++)
 			distances[i] = (i == start.getIndex())? 0: Integer.MAX_VALUE;
 		
@@ -54,6 +54,23 @@ public class Searcher_weighted {
 	
 	/* shortest path tree using Bellman Ford */
 	public int[] bellmanford(Node<Integer> start) {
-		return new int[] {};
+		ArrayList<Node<Integer>> nodes = graph.getNodes();
+		ArrayList<ArrayList<Node<Integer>>> adjacencyList = graph.getAdjacencyList();
+		ArrayList<ArrayList<Edge<Integer>>> edges = graph.getEdges();
+		int[] distances = new int[graph.getNodes().size()];
+		for (int i = 0; i < distances.length; i++)
+			distances[i] = (i == start.getIndex())? 0: Integer.MAX_VALUE/2;
+		for (int i = 0; i < nodes.size(); i++) {
+			int minimalEdgeCost = Integer.MAX_VALUE;
+			for (int j = 0; j < adjacencyList.get(i).size(); j++) {
+				if (edges.get(j).get(i).getEnd().getIndex() != nodes.get(i).getIndex() || 
+						distances[edges.get(j).get(i).getEnd().getIndex()] + edges.get(j).get(i).getCost() > minimalEdgeCost)
+					continue;
+				minimalEdgeCost = distances[edges.get(j).get(i).getEnd().getIndex()] + edges.get(j).get(i).getCost();
+			}
+			if (distances[nodes.get(i).getIndex()] > minimalEdgeCost)
+				distances[nodes.get(i).getIndex()] = minimalEdgeCost;
+		}
+		return distances;
 	}
 }
