@@ -81,25 +81,32 @@ public class SearchTest {
 	
 	@Test
 	public void testDijkstra() {
-		Graph<Integer> graph = createGraph1();
+		Graph<Integer> graph = createGraph(false);
 		Searcher_weighted searcher = new Searcher_weighted(graph);
-		
 		Node<Integer> start = graph.getStart();
 		
 		int[] distances = searcher.dijkstra(start);
-		int[] correct = new int[] {0, 4, 2, 3, 4};
+		int[] correct = new int[] {0, 2, 0, 1, 2};
 		assertEquals(true, Arrays.equals(distances, correct));
 	}
 	@Test
 	public void testBellmanFord() {
-		Graph<Integer> graph = createGraph1();
-		Searcher_weighted searcher = new Searcher_weighted(graph);
+		Graph<Integer> graph1 = createGraph(false);
+		Searcher_weighted searcher1 = new Searcher_weighted(graph1);
+		Node<Integer> start1 = graph1.getStart();
 		
-		Node<Integer> start = graph.getStart();
+		int[] distances1 = searcher1.bellmanford(start1);
+		int[] correct1 = new int[] {0, 2, 0, 1, 2};
+		System.out.println(Arrays.toString(distances1));
+		assertEquals(true, Arrays.equals(distances1, correct1));
 		
-		int[] distances = searcher.bellmanford(start);
-		int[] correct = new int[] {0, 4, 2, 3, 4};
-		assertEquals(true, Arrays.equals(distances, correct));
+		Graph<Integer> graph2 = createGraph(true);
+		Searcher_weighted searcher2 = new Searcher_weighted(graph2);
+		Node<Integer> start2 = graph2.getStart();
+		
+		int[] distances2 = searcher2.bellmanford(start2);
+		int[] correct2 = new int[] {0, -4, 0, -2, -3};
+		assertEquals(true, Arrays.equals(distances2, correct2));
 	}
 	
 	public ArrayList<ArrayList<Node<Integer>>> createArrayList() {
@@ -146,16 +153,16 @@ public class SearchTest {
 		
 		return data;
 	}
-	public Graph createGraph1() {
+	public Graph createGraph(boolean negativeWeightsAllowed) {
 		/* 
-		 * creates a weighted graph with non-negative 
-		 * edge-costs and no cycles
+		 * creates a weighted graph with
+		 * positive (and, if allowed, negative) edge-costs and no cycles
 		 */
 		
 		Node.setId(0);
 		
 		ArrayList<Node<Integer>> nodes = new ArrayList<Node<Integer>>();
-		ArrayList<ArrayList<Node<Integer>>> adj = new ArrayList<ArrayList<Node<Integer>>>();
+		ArrayList<ArrayList<Node<Integer>>> adjacencyList = new ArrayList<ArrayList<Node<Integer>>>();
 		ArrayList<Node<Integer>> node_0_adj = new ArrayList<Node<Integer>>();
 		ArrayList<Node<Integer>> node_1_adj = new ArrayList<Node<Integer>>();
 		ArrayList<Node<Integer>> node_2_adj = new ArrayList<Node<Integer>>();
@@ -173,49 +180,50 @@ public class SearchTest {
 		nodes.add(node_4);
 		node_0_adj.add(node_1);
 		node_0_adj.add(node_2);
-		node_0_adj.add(node_4);
+		node_0_adj.add(node_3);
 		node_1_adj.add(node_4);
 		node_2_adj.add(node_3);
 		node_3_adj.add(node_4);
+		node_3_adj.add(node_1);
 		node_4_adj.add(node_2);
-		adj.add(node_0_adj);
-		adj.add(node_1_adj);
-		adj.add(node_2_adj);
-		adj.add(node_3_adj);
-		adj.add(node_4_adj);
+		adjacencyList.add(node_0_adj);
+		adjacencyList.add(node_1_adj);
+		adjacencyList.add(node_2_adj);
+		adjacencyList.add(node_3_adj);
+		adjacencyList.add(node_4_adj);
 		
 		ArrayList<ArrayList<Edge<Integer>>> edges = new ArrayList<>();
 		edges.add(new ArrayList<>());
 		edges.get(0).add(new Edge<Integer>(node_0, node_0, 0));
-		edges.get(0).add(new Edge<Integer>(node_0, node_1, 4));
-		edges.get(0).add(new Edge<Integer>(node_0, node_2, 2));
-		edges.get(0).add(new Edge<Integer>(node_0, node_3, 0));
-		edges.get(0).add(new Edge<Integer>(node_0, node_4, 18));
+		edges.get(0).add(new Edge<Integer>(node_0, node_1, (negativeWeightsAllowed)? -4 : 4));
+		edges.get(0).add(new Edge<Integer>(node_0, node_2, 0));
+		edges.get(0).add(new Edge<Integer>(node_0, node_3, (negativeWeightsAllowed)? -1 : 1));
+		edges.get(0).add(new Edge<Integer>(node_0, node_4, 0));
 		edges.add(new ArrayList<>());
 		edges.get(1).add(new Edge<Integer>(node_1, node_0, 0));
 		edges.get(1).add(new Edge<Integer>(node_1, node_1, 0));
 		edges.get(1).add(new Edge<Integer>(node_1, node_2, 0));
 		edges.get(1).add(new Edge<Integer>(node_1, node_3, 0));
-		edges.get(1).add(new Edge<Integer>(node_1, node_4, 1));
+		edges.get(1).add(new Edge<Integer>(node_1, node_4, 5));
 		edges.add(new ArrayList<>());
 		edges.get(2).add(new Edge<Integer>(node_2, node_0, 0));
 		edges.get(2).add(new Edge<Integer>(node_2, node_1, 0));
 		edges.get(2).add(new Edge<Integer>(node_2, node_2, 0));
-		edges.get(2).add(new Edge<Integer>(node_2, node_3, 1));
+		edges.get(2).add(new Edge<Integer>(node_2, node_3, (negativeWeightsAllowed)? -2 : 2));
 		edges.get(2).add(new Edge<Integer>(node_2, node_4, 0));
 		edges.add(new ArrayList<>());
 		edges.get(3).add(new Edge<Integer>(node_3, node_0, 0));
-		edges.get(3).add(new Edge<Integer>(node_3, node_1, 0));
+		edges.get(3).add(new Edge<Integer>(node_3, node_1, 1));
 		edges.get(3).add(new Edge<Integer>(node_3, node_2, 0));
 		edges.get(3).add(new Edge<Integer>(node_3, node_3, 0));
-		edges.get(3).add(new Edge<Integer>(node_3, node_4, 1));
+		edges.get(3).add(new Edge<Integer>(node_3, node_4, (negativeWeightsAllowed)? -1 : 1));
 		edges.add(new ArrayList<>());
 		edges.get(4).add(new Edge<Integer>(node_4, node_0, 0));
 		edges.get(4).add(new Edge<Integer>(node_4, node_1, 0));
-		edges.get(4).add(new Edge<Integer>(node_4, node_2, 1));
+		edges.get(4).add(new Edge<Integer>(node_4, node_2, 3));
 		edges.get(4).add(new Edge<Integer>(node_4, node_3, 0));
 		edges.get(4).add(new Edge<Integer>(node_4, node_4, 0));
 				
-		return new Graph(nodes, adj, edges, node_0, node_4);
+		return new Graph(nodes, adjacencyList, edges, node_0, node_4);
 	}
 }
