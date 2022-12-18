@@ -99,7 +99,6 @@ public class SearchTest {
 		
 		int[] distances = searcher.bellmanford(start);
 		int[] correct = new int[] {0, 4, 2, 3, 4};
-		System.out.println(Arrays.toString(distances));
 		assertEquals(true, Arrays.equals(distances, correct));
 	}
 	

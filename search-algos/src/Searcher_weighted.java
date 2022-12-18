@@ -45,7 +45,7 @@ public class Searcher_weighted {
 				decreaseKey(heap, adjacencyList.get(current.getIndex()).get(i), distances[adjacencyList.get(current.getIndex()).get(i).getIndex()]);
 			}
 		}
-		return distances;
+		return distances; 
 	}
 	public void decreaseKey(Heap<Node<Integer>> heap, Node<Integer> pointerToNode, int value) {
 		pointerToNode.value = value;
@@ -61,12 +61,10 @@ public class Searcher_weighted {
 		for (int i = 0; i < distances.length; i++)
 			distances[i] = (i == start.getIndex())? 0: Integer.MAX_VALUE/2;
 		for (int i = 0; i < nodes.size(); i++) {
-			int minimalEdgeCost = Integer.MAX_VALUE;
-			for (int j = 0; j < adjacencyList.get(i).size(); j++) {
-				if (edges.get(j).get(i).getEnd().getIndex() != nodes.get(i).getIndex() || 
-						distances[edges.get(j).get(i).getEnd().getIndex()] + edges.get(j).get(i).getCost() > minimalEdgeCost)
-					continue;
-				minimalEdgeCost = distances[edges.get(j).get(i).getEnd().getIndex()] + edges.get(j).get(i).getCost();
+			int minimalEdgeCost = Integer.MAX_VALUE/2;
+			for (int j = 0; j < edges.size(); j++) {
+				if (adjacencyList.get(j).contains(nodes.get(i)) && distances[edges.get(j).get(i).getStart().getIndex()] + edges.get(j).get(i).getCost() < minimalEdgeCost)
+					minimalEdgeCost = distances[edges.get(j).get(i).getStart().getIndex()] + edges.get(j).get(i).getCost();
 			}
 			if (distances[nodes.get(i).getIndex()] > minimalEdgeCost)
 				distances[nodes.get(i).getIndex()] = minimalEdgeCost;
