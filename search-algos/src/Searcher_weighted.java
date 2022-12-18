@@ -59,11 +59,12 @@ public class Searcher_weighted {
 		ArrayList<ArrayList<Edge<Integer>>> edges = graph.getEdges();
 		int[] distances = new int[graph.getNodes().size()];
 		for (int i = 0; i < distances.length; i++)
-			distances[i] = (i == start.getIndex())? 0: Integer.MAX_VALUE/2;
+			distances[i] = (i == start.getIndex())? 0: Integer.MAX_VALUE;
 		for (int i = 0; i < nodes.size(); i++) {
-			int minimalEdgeCost = Integer.MAX_VALUE/2;
+			int minimalEdgeCost = Integer.MAX_VALUE;
 			for (int j = 0; j < edges.size(); j++) {
-				if (adjacencyList.get(j).contains(nodes.get(i)) && distances[edges.get(j).get(i).getStart().getIndex()] + edges.get(j).get(i).getCost() < minimalEdgeCost)
+				if (adjacencyList.get(j).contains(nodes.get(i)) && 
+						distances[edges.get(j).get(i).getStart().getIndex()] + edges.get(j).get(i).getCost() < minimalEdgeCost)
 					minimalEdgeCost = distances[edges.get(j).get(i).getStart().getIndex()] + edges.get(j).get(i).getCost();
 			}
 			if (distances[nodes.get(i).getIndex()] > minimalEdgeCost)
