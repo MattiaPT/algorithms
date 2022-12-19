@@ -93,18 +93,17 @@ public class SearchTest {
 	public void testBellmanFord() {
 		Graph<Integer> graph1 = createGraph(false);
 		Searcher_weighted searcher1 = new Searcher_weighted(graph1);
-		Node<Integer> start1 = graph1.getStart();
+		Node<Integer> start = graph1.getStart();
 		
-		int[] distances1 = searcher1.bellmanford(start1);
+		int[] distances1 = searcher1.bellmanford(start);
 		int[] correct1 = new int[] {0, 2, 0, 1, 2};
 		System.out.println(Arrays.toString(distances1));
 		assertEquals(true, Arrays.equals(distances1, correct1));
 		
 		Graph<Integer> graph2 = createGraph(true);
 		Searcher_weighted searcher2 = new Searcher_weighted(graph2);
-		Node<Integer> start2 = graph2.getStart();
 		
-		int[] distances2 = searcher2.bellmanford(start2);
+		int[] distances2 = searcher2.bellmanford(start);
 		int[] correct2 = new int[] {0, -4, 0, -2, -3};
 		assertEquals(true, Arrays.equals(distances2, correct2));
 	}
