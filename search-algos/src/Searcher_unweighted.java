@@ -20,6 +20,9 @@ public class Searcher_unweighted {
 	public Searcher_unweighted(ArrayList<Node<Integer>> nodes, ArrayList<ArrayList<Node<Integer>>> adjacencyList) {
 		graph = new Graph(nodes, adjacencyList);
 	}
+	public Searcher_unweighted(Graph graph) {
+		this.graph = graph;
+	}
 	
 
 	/* tests reachability of y from start x using DFS */
@@ -84,6 +87,7 @@ public class Searcher_unweighted {
 	public boolean reachableBFSit(Node<Integer> start, Node<Integer> end) {
 		Queue<Node<Integer>> queue = new LinkedList<Node<Integer>>();
 		ArrayList<ArrayList<Node<Integer>>> adjacencyList = graph.getAdjacencyList();
+		if (adjacencyList.isEmpty()) return false;
 		boolean[] visited = new boolean[graph.getNodes().size()];
 		queue.add(start);
 		while (!queue.isEmpty()) {

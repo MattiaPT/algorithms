@@ -77,9 +77,10 @@ public class Searcher_weighted {
 	
 	/* minimal spanning tree using Boruvka */
 	public Graph Boruvka() {
-		Graph MST = new Graph();
-		MST.setNodes(graph.getNodes());
-		ArrayList<ArrayList<Node<Integer>>> adjacencyList = graph.getAdjacencyList();
+		ArrayList<ArrayList<Node<Integer>>> adjacencyList = new ArrayList<ArrayList<Node<Integer>>>();
+		for (int i = 0; i < graph.getNodes().size(); i++)
+			adjacencyList.add(new ArrayList<Node<Integer>>());
+		Graph MST = new Graph(graph.getNodes(), adjacencyList);
 		ArrayList<ArrayList<Edge<Integer>>> edges = graph.getEdges();
 		ArrayList<ArrayList<Node<Integer>>> ZHKs = new ArrayList<ArrayList<Node<Integer>>>();
 		for (int i = 0; i < graph.getNodes().size(); i++) {
@@ -99,6 +100,7 @@ public class Searcher_weighted {
 					}
 				}
 				MST.addEdge(minEdge.getStart(), minEdge.getEnd(), minEdge.getCost());
+				ZHKs = MST.getZHKs();
 			}
 		}
 		return MST; 
