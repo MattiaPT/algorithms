@@ -18,6 +18,7 @@ public class Graph<T extends Comparable<T>> {
 	
 	
 	/* CONSTRUCTORS */
+	public Graph() {}
 	public Graph(ArrayList<Node<T>> nodes, ArrayList<ArrayList<Node<T>>> adjacencyList) {
 		edges = new ArrayList<ArrayList<Edge<T>>>();;
 		for (int i = 0; i < adjacencyList.size(); i++) {
@@ -42,21 +43,36 @@ public class Graph<T extends Comparable<T>> {
 	}
 	
 	
+	public void addEdge(Node<T> start, Node<T> end, int cost) {
+		edges.get(start.getIndex()).set(end.getIndex(), new Edge<T>(start, end, cost));
+		adjacencyList.get(start.getIndex()).add(end);
+	}
+	
+	/* MUTATOR METHODS */
+	public void setNodes(ArrayList<Node<T>> nodes) {
+		this.nodes = nodes;
+	}
+	public void setEdges(ArrayList<ArrayList<Edge<T>>> edges) {
+		this.edges = edges;
+	}
+	public void setAdjacencyList(ArrayList<ArrayList<Node<T>>> adjacencyList) {
+		this.adjacencyList = adjacencyList;
+	}
 	/* ACCESSOR METHODS */
-	public ArrayList<ArrayList<Node<T>>> getAdjacencyList() {
-		return adjacencyList;
+	public ArrayList<Node<T>> getNodes() {
+		return nodes;
 	}
 	public ArrayList<ArrayList<Edge<T>>> getEdges() {
 		return edges;
+	}
+	public ArrayList<ArrayList<Node<T>>> getAdjacencyList() {
+		return adjacencyList;
 	}
 	public Node<T> getStart() {
 		return start;
 	}
 	public Node<T> getEnd() {
 		return end;
-	}
-	public ArrayList<Node<T>> getNodes() {
-		return nodes;
 	}
 	
 	

@@ -97,7 +97,6 @@ public class SearchTest {
 		
 		int[] distances1 = searcher1.bellmanford(start);
 		int[] correct1 = new int[] {0, 2, 0, 1, 2};
-		System.out.println(Arrays.toString(distances1));
 		assertEquals(true, Arrays.equals(distances1, correct1));
 		
 		Graph<Integer> graph2 = createGraph(true);
@@ -106,6 +105,14 @@ public class SearchTest {
 		int[] distances2 = searcher2.bellmanford(start);
 		int[] correct2 = new int[] {0, -4, 0, -2, -3};
 		assertEquals(true, Arrays.equals(distances2, correct2));
+	}
+	@Test
+	public void testBoruvka() {
+		Graph<Integer> graph1 = createGraph(false);
+		Searcher_weighted searcher1 = new Searcher_weighted(graph1);
+		
+		Graph MST1 = searcher1.Boruvka();
+		System.out.println(MST1);
 	}
 	
 	public ArrayList<ArrayList<Node<Integer>>> createArrayList() {
