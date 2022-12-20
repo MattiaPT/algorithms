@@ -16,4 +16,4 @@ and playing around with algorithms learnt in the *algorithms & datastructures* l
 
 ### in weighted graphs:
 - Dijkstra (shortest path algorithm)
-- (in progress)
+- Bellman Ford
