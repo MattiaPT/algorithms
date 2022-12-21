@@ -14,6 +14,7 @@ public class Edge<T extends Comparable<T>> {
 	
 	
 	/* CONSTRUCTORS */
+	public Edge() {}
 	public Edge(Node<T> start, Node<T> end, int cost) {
 		this.start = start;
 		this.end = end;

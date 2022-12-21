@@ -44,8 +44,43 @@ public class Graph<T extends Comparable<T>> {
 	
 	
 	public void addEdge(Node<T> start, Node<T> end, int cost) {
+		if (edges == null) edges = new ArrayList<ArrayList<Edge<T>>>();
+		if (adjacencyList == null) adjacencyList = new ArrayList<ArrayList<Node<T>>>();
+		while (true) {
+			try { edges.get(start.getIndex()); break; }
+			catch (Exception e) { edges.add(new ArrayList<Edge<T>>()); }
+		}
+		while (true) {
+			try { edges.get(start.getIndex()).get(end.getIndex()); break; }
+			catch (Exception e) { edges.get(start.getIndex()).add(new Edge<T>()); }
+		}
 		edges.get(start.getIndex()).set(end.getIndex(), new Edge<T>(start, end, cost));
+		
+		while (true) {
+			try { adjacencyList.get(start.getIndex()); break; }
+			catch (Exception e) { adjacencyList.add(new ArrayList<Node<T>>()); }
+		}
 		adjacencyList.get(start.getIndex()).add(end);
+	}
+	
+	public ArrayList<ArrayList<Node<Integer>>> getZHKs() {
+		ArrayList<ArrayList<Node<Integer>>> ZHKs = new ArrayList<ArrayList<Node<Integer>>>();
+		ZHKs.add(new ArrayList<Node<Integer>>());
+		ZHKs.get(0).add((Node<Integer>) nodes.get(0));
+		Searcher_unweighted searcher = new Searcher_unweighted(this);
+		
+		int index = 0;
+		for (int i = 0; i < nodes.size(); i++) {
+			Node<Integer> node = (Node<Integer>) nodes.get(i);
+			if (searcher.reachableBFSit(ZHKs.get(index).get(0), (Node<Integer>) nodes.get(i))) {
+				ZHKs.get(index).add((Node<Integer>) nodes.get(i));
+				continue;
+			}
+			index++;
+			ZHKs.add(new ArrayList<Node<Integer>>());
+			ZHKs.get(index).add((Node<Integer>) nodes.get(i));
+		}
+		return ZHKs;
 	}
 	
 	/* MUTATOR METHODS */
