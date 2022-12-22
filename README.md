@@ -15,6 +15,6 @@ and playing around with algorithms learnt in the *algorithms & datastructures* l
 - BFS: Test Reachability, Shortest Path Algorithm, (in progress)
 
 ### in weighted graphs:
-- Dijkstra (shortest path algorithm)
-- Bellman Ford
+- Dijkstra: Shortest Path Algorithm
+- Bellman Ford: Shortest Path Algorithm
 - (in progess)
