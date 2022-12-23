@@ -62,6 +62,9 @@ public class Graph<T extends Comparable<T>> {
 		}
 		adjacencyList.get(start.getIndex()).add(end);
 	}
+	public void addEdge(Edge<T> edge) {
+		addEdge(edge.getStart(), edge.getEnd(), edge.getCost());
+	}
 	
 	public ArrayList<ArrayList<Node<Integer>>> getZHKs() {
 		ArrayList<ArrayList<Node<Integer>>> ZHKs = new ArrayList<ArrayList<Node<Integer>>>();
@@ -70,7 +73,7 @@ public class Graph<T extends Comparable<T>> {
 		Searcher_unweighted searcher = new Searcher_unweighted(this);
 		
 		int index = 0;
-		for (int i = 0; i < nodes.size(); i++) {
+		for (int i = 1; i < nodes.size(); i++) {
 			Node<Integer> node = (Node<Integer>) nodes.get(i);
 			if (searcher.reachableBFSit(ZHKs.get(index).get(0), (Node<Integer>) nodes.get(i))) {
 				ZHKs.get(index).add((Node<Integer>) nodes.get(i));
@@ -81,6 +84,15 @@ public class Graph<T extends Comparable<T>> {
 			ZHKs.get(index).add((Node<Integer>) nodes.get(i));
 		}
 		return ZHKs;
+	}
+	
+	public int getTotalCost() {
+		int total = 0;
+		for (ArrayList<Edge<T>> edgeList : edges) {
+			for (Edge<T> edge : edgeList)
+				total += edge.getCost();
+		}
+		return total;
 	}
 	
 	/* MUTATOR METHODS */

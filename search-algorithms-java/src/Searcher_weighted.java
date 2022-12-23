@@ -77,26 +77,22 @@ public class Searcher_weighted {
 	
 	/* minimal spanning tree using Boruvka */
 	public Graph Boruvka() {
-		ArrayList<ArrayList<Node<Integer>>> adjacencyList = new ArrayList<ArrayList<Node<Integer>>>();
+		ArrayList<ArrayList<Node<Integer>>> MSTAdjacencyList = new ArrayList<ArrayList<Node<Integer>>>();
 		for (int i = 0; i < graph.getNodes().size(); i++)
-			adjacencyList.add(new ArrayList<Node<Integer>>());
-		Graph MST = new Graph(graph.getNodes(), adjacencyList);
+			MSTAdjacencyList.add(new ArrayList<Node<Integer>>());
+		Graph MST = new Graph(graph.getNodes(), MSTAdjacencyList);
+		ArrayList<ArrayList<Node<Integer>>> graphAdjacencyList = graph.getAdjacencyList();
 		ArrayList<ArrayList<Edge<Integer>>> edges = graph.getEdges();
-		ArrayList<ArrayList<Node<Integer>>> ZHKs = new ArrayList<ArrayList<Node<Integer>>>();
-		for (int i = 0; i < graph.getNodes().size(); i++) {
-			ZHKs.add(new ArrayList<Node<Integer>>());
-			ZHKs.get(i).add((Node<Integer>) graph.getNodes().get(i));
-		} 
-			
+		ArrayList<ArrayList<Node<Integer>>> ZHKs = MST.getZHKs();
+		
 		while (ZHKs.size() != 1) {
 			for (ArrayList<Node<Integer>> ZHK : ZHKs) {
 				Edge<Integer> minEdge = new Edge(null, null, Integer.MAX_VALUE);
 				for (Node<Integer> node : ZHK) {
-					for (Node<Integer> neighbour : adjacencyList.get(node.getIndex())) {
-						int index = neighbour.getIndex();
-						if (minEdge.getCost() < edges.get(node.getIndex()).get(index).getCost())
+					for (Node<Integer> neighbour : graphAdjacencyList.get(node.getIndex())) {
+						if (minEdge.getCost() < edges.get(node.getIndex()).get(neighbour.getIndex()).getCost())
 							continue;
-						minEdge = edges.get(node.getIndex()).get(index);
+						minEdge = edges.get(node.getIndex()).get(neighbour.getIndex());
 					}
 				}
 				MST.addEdge(minEdge.getStart(), minEdge.getEnd(), minEdge.getCost());

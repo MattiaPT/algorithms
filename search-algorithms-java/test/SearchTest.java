@@ -110,9 +110,18 @@ public class SearchTest {
 	public void testBoruvka() {
 		Graph<Integer> graph1 = createGraph(false);
 		Searcher_weighted searcher1 = new Searcher_weighted(graph1);
+		for (ArrayList<Edge<Integer>> edges : graph1.getEdges()) {
+			for (Edge<Integer> edge : edges) {
+				if (edge.getCost() == 0)
+					continue;
+				System.out.println(edge);
+			}
+		}
 		
 		Graph MST1 = searcher1.Boruvka();
 		System.out.println(MST1);
+		System.out.println(MST1.getTotalCost());
+		assertEquals(5, MST1.getTotalCost());
 	}
 	
 	public ArrayList<ArrayList<Node<Integer>>> createArrayList() {
