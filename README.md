@@ -10,6 +10,7 @@ and playing around with algorithms learnt in the *algorithms & datastructures* l
 - Quick Sort
 
 ## Search Algorithms
+using an own implementation of Graphs
 ### in unweighted graphs:
 - DFS: Test Reachability, (in progress)
 - BFS: Test Reachability, Shortest Path Algorithm, (in progress)
