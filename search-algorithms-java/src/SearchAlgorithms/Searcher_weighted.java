@@ -1,4 +1,6 @@
+package SearchAlgorithms;
 import java.util.ArrayList;
+import GraphTheory.*;
 
 /*
  * Author: Mattia
@@ -88,11 +90,11 @@ public class Searcher_weighted {
 		while (ZHKs.size() != 1) {
 			for (ArrayList<Node<Integer>> ZHK : ZHKs) {
 				Edge<Integer> minEdge = new Edge(null, null, Integer.MAX_VALUE);
-				for (Node<Integer> node : ZHK) {
-					for (Node<Integer> neighbour : graphAdjacencyList.get(node.getIndex())) {
-						if (minEdge.getCost() < edges.get(node.getIndex()).get(neighbour.getIndex()).getCost())
+				for (Node<Integer> Node : ZHK) {
+					for (Node<Integer> neighbour : graphAdjacencyList.get(Node.getIndex())) {
+						if (minEdge.getCost() < edges.get(Node.getIndex()).get(neighbour.getIndex()).getCost())
 							continue;
-						minEdge = edges.get(node.getIndex()).get(neighbour.getIndex());
+						minEdge = edges.get(Node.getIndex()).get(neighbour.getIndex());
 					}
 				}
 				MST.addEdge(minEdge.getStart(), minEdge.getEnd(), minEdge.getCost());

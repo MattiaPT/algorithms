@@ -1,4 +1,6 @@
+package GraphTheory;
 import java.util.ArrayList;
+import SearchAlgorithms.*;
 
 /*
  * Author: Mattia
@@ -69,12 +71,14 @@ public class Graph<T extends Comparable<T>> {
 	public ArrayList<ArrayList<Node<Integer>>> getZHKs() {
 		ArrayList<ArrayList<Node<Integer>>> ZHKs = new ArrayList<ArrayList<Node<Integer>>>();
 		ZHKs.add(new ArrayList<Node<Integer>>());
+		if (!(nodes.get(0).getValue() instanceof Integer))
+			return null;
 		ZHKs.get(0).add((Node<Integer>) nodes.get(0));
 		Searcher_unweighted searcher = new Searcher_unweighted(this);
 		
 		int index = 0;
 		for (int i = 1; i < nodes.size(); i++) {
-			Node<Integer> node = (Node<Integer>) nodes.get(i);
+			Node<T> Node = nodes.get(i);
 			if (searcher.reachableBFSit(ZHKs.get(index).get(0), (Node<Integer>) nodes.get(i))) {
 				ZHKs.get(index).add((Node<Integer>) nodes.get(i));
 				continue;

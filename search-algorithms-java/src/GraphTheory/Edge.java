@@ -1,3 +1,4 @@
+package GraphTheory;
 /*
  * Author: Mattia
  * Date: 14.12.22

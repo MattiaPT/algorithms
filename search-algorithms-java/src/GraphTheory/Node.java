@@ -1,3 +1,4 @@
+package GraphTheory;
 /*
  * Author: Mattia
  * Date: 12.12.22
@@ -11,7 +12,7 @@ public class Node<T extends Comparable<T>> implements Comparable<Node<T>>{
 	private static int id;
 	
 	private int index;
-	T value;
+	public T value;
 	
 	
 	/* CONSTRUCTORS */
