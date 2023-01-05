@@ -16,13 +16,10 @@ public class PastureBreakTest {
 	public void testNaiveApproach() {
 		PastureBreak example1 = new PastureBreak(7);
 		assertEquals(91, example1.naiveApproach());
-		System.out.println("ideal approach: " + example1.idealApproach());
 	}
 	@Test
 	public void testIdealApproach() {
-		PastureBreak example1 = new PastureBreak();
-		System.out.println("pasture break: " + example1.getPastureBreakPosition());
-		System.out.println("naive approach: " + example1.naiveApproach());
-		System.out.println("ideal approach: " + example1.idealApproach());
+		PastureBreak example1 = new PastureBreak(7);
+		assertEquals(37, example1.idealApproach());
 	}
 }

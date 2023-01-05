@@ -32,21 +32,16 @@ public class PastureBreak {
 	}
 	
 	public int idealApproach() {
-		int totalSteps = 0, current = 0, drop;
-main:
+		int totalSteps = 0, current = 0, i = 0, drop;
 		while (true) {
-			int oldPosition = current;
-			drop = (current > 0)? current--: current++;
-			for (int i = 0; i < 2*Math.pow(oldPosition, 2); i++) {
-				System.out.println(current);
+			while (Math.abs(current) < Math.pow(2, i)) {
 				totalSteps++;
-				drop = (current < oldPosition)? current--: current++;
+				drop = (i%2 == 0)? current++: current--;
 				if (current == pastureBreakPosition)
-					break main;
+					return totalSteps;
 			}
-			
+			i++;
 		}
-		return totalSteps;
 	}
 	
 	public int getPastureBreakPosition() {
