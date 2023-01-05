@@ -10,14 +10,21 @@
 #include <cstdlib>
 #include <cmath>
 
+int multiplication_counter;
+
 int karatsubaOfmanAlgorithm(int x, int y)
 {
 	int total = 0, a = 0, b = 0, c = 0, d = 0;
 
-	int partition = int(log10(x) + 1) / 2;
-	if (partition == 0 && int(log10(y) + 1) == 1)
+	int partitionX = int(log10(x) + 1) / 2;
+	int partitionY = int(log10(y) + 1) / 2;
+	std::cout << x << " " << partitionX << " " << y << " " << partitionY << std::endl;
+	if ((partitionX == 0 || x < 0) && (partitionY == 0 || y < 0)) {
+		multiplication_counter++;
 		return x * y;
-	int p = pow(10, partition);
+	} else if (x == 0 || y == 0)
+		return 0;
+	int p = pow(10, partitionX);
 
 	a = x / p;
 	b = x % p;
@@ -27,13 +34,15 @@ int karatsubaOfmanAlgorithm(int x, int y)
 
 	int ac = karatsubaOfmanAlgorithm(a, c);
 	int bd = karatsubaOfmanAlgorithm(b, d);
-	return (100*ac + 10*ac + 10*bd + bd + 10*(a-b)*(d-c));
+	return (100*ac + 10*ac + 10*bd + bd + 10*karatsubaOfmanAlgorithm((a-b), (d-c)));
 }
 
 int main(int argc, char **argv)
 {
 	if (argc != 3)
 		return -1;
-	std::cout << karatsubaOfmanAlgorithm(atoi(argv[1]), atoi(argv[2])) << std::endl;
+	multiplication_counter = 0;
+	std::cout << argv[1] << " * " << argv[2] << " = " << karatsubaOfmanAlgorithm(atoi(argv[1]), atoi(argv[2])) << std::endl;
+	std::cout << multiplication_counter << " multiplications, instead of " << int(log10(atoi(argv[1])) + 1)*int(log10(atoi(argv[2])) + 1) << std::endl;
 	return 0;
 }
