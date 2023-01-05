@@ -18,12 +18,19 @@ int karatsubaOfmanAlgorithm(int x, int y)
 
 	int partitionX = int(log10(x) + 1) / 2;
 	int partitionY = int(log10(y) + 1) / 2;
-	std::cout << x << " " << partitionX << " " << y << " " << partitionY << std::endl;
 	if ((partitionX == 0 || x < 0) && (partitionY == 0 || y < 0)) {
 		multiplication_counter++;
 		return x * y;
-	} else if (x == 0 || y == 0)
+	} else if (x == 0 || y == 0) {
 		return 0;
+	} else if ((partitionX == 1 || (x < 0 && x > -10)) && (partitionY == 0 || (y < 0 && y > -10))) {
+		multiplication_counter++;
+		return (x/10 * 10*y + x%10 * y);
+	} else if ((partitionX == 0 || (x < 0 && x > -10)) && (partitionY == 1 || (y < 0 && y > -10))) {
+		multiplication_counter++;
+		return (y/10 * 10*x + y%10 * x);
+	}
+
 	int p = pow(10, partitionX);
 
 	a = x / p;
