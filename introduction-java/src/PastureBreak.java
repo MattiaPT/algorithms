@@ -3,7 +3,7 @@ import java.lang.Math;
 
 /*
  * Author: Mattia
- * Date: 05.01.22
+ * Date: 05.01.23
  * 
  * This class should realize a numerical implementation
  * for the pasture break problem:
