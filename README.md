@@ -8,6 +8,8 @@ and playing around with algorithms learnt in the *algorithms & datastructures* l
 - Maximum Subarray Sum
 
 ## Searching & Sorting Algorithms (list)
+- Binary Search
+
 - Bubble Sort
 - Selection Sort
 - Insertion Sort
@@ -22,10 +24,9 @@ and playing around with algorithms learnt in the *algorithms & datastructures* l
 ## Search Algorithms (graph)
 using an own implementation of Graphs
 ### in unweighted graphs:
-- DFS: Test Reachability, (in progress)
-- BFS: Test Reachability, Shortest Path Algorithm, (in progress)
+- DFS: Test Reachability
+- BFS: Test Reachability, Shortest Path Algorithm
 
 ### in weighted graphs:
 - Dijkstra: Shortest Path Algorithm
 - Bellman Ford: Shortest Path Algorithm
-- (in progess)

@@ -9,7 +9,7 @@ import java.util.Arrays;
  */
 
 public class Sorter {
-	int[] array;
+	private int[] array;
 	
 	
 	/* CONSTRUCTORS */
@@ -168,5 +168,8 @@ public class Sorter {
 	}
 	public String toString() {
 		return Arrays.toString(array);
+	}
+	public void setArray(int[] array) {
+		this.array = array;
 	}
 }
