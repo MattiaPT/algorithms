@@ -6,7 +6,7 @@ and playing around with algorithms learnt in the *algorithms & datastructures* l
 - Pasture Break
 - Star Search
 
-## Sorting Algorithms
+## Searching & Sorting Algorithms (list)
 - Bubble Sort
 - Selection Sort
 - Insertion Sort
@@ -14,7 +14,11 @@ and playing around with algorithms learnt in the *algorithms & datastructures* l
 - Merge Sort
 - Quick Sort
 
-## Search Algorithms
+## DP Algorithms
+- Fibonacci
+
+
+## Search Algorithms (graph)
 using an own implementation of Graphs
 ### in unweighted graphs:
 - DFS: Test Reachability, (in progress)
