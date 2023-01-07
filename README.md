@@ -1,6 +1,11 @@
 This is the repository, where I will be implementing
 and playing around with algorithms learnt in the *algorithms & datastructures* lectures.
 
+## Introduction Algorithms
+- Karatsuba and Ofman
+- Pasture Break
+- Star Search
+
 ## Sorting Algorithms
 - Bubble Sort
 - Selection Sort
