@@ -4,7 +4,8 @@ and playing around with algorithms learnt in the *algorithms & datastructures* l
 ## Introduction Algorithms
 - Karatsuba and Ofman
 - Pasture Break
-- Star Search
+- Star Search (using graphs)
+- Maximum Subarray Sum
 
 ## Searching & Sorting Algorithms (list)
 - Bubble Sort
