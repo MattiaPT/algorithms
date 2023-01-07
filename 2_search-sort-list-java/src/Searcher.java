@@ -36,7 +36,8 @@ public class Searcher {
 	public int interpolationSearch(int value) {
 		int left = 0, expectation, right = array.length - 1;
 		while (left <= right) {
-			expectation = (value - array[left])/(array[right] - array[left]);
+			expectation = (int)((left + right) * ((double) (value - array[left]))/(array[right] - array[left]));
+			System.out.println(expectation);
 			if (array[expectation] == value)
 				return expectation;
 			if (array[expectation] < value)
@@ -46,5 +47,10 @@ public class Searcher {
 		}
 		
 		return left;
+	}
+	
+	/* EXPONENTIAL SEARCH */
+	public int exponentialSearch(int value) {
+		return 0;
 	}
 }

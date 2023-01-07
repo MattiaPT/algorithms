@@ -17,7 +17,11 @@ public class SearchTest {
 	
 	@Test
 	public void testInterpolationSearch() {
-		Searcher test1 = new Searcher(new int[] {1, 6, 8, 11, 20, 42, 44, 45, 210});
-		assertEquals(6, test1.binarySearchit(44));
+		Searcher test1 = new Searcher(new int[] {1, 6, 8, 11, 20, 42, 44, 45, 60});
+		assertEquals(6, test1.interpolationSearch(44));
+	}
+	
+	@Test
+	public void testExponentialSearch() {
 	}
 }
