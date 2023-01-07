@@ -9,7 +9,7 @@ import GraphTheory.*;
  * Date: 06.01.23
  * 
  * This class should realize a numerical implementation
- * for the star search problem
+ * for the star search problem.
  */
 
 @SuppressWarnings("rawtypes")

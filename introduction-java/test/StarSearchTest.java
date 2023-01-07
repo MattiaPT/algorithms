@@ -1,6 +1,5 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.ArrayList;
-import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 
 import GraphTheory.Edge;
@@ -19,14 +18,14 @@ public class StarSearchTest {
 	@Test
 	public void testNaiveApproach() {
 		Graph graph = createGraph();
-		StarSearch example1 = new StarSearch(graph);
-		assertEquals(1, example1.naiveApproach());
+		StarSearch test1 = new StarSearch(graph);
+		assertEquals(1, test1.naiveApproach());
 	}
 	@Test
 	public void testIdealApproach() {
 		Graph graph = createGraph();
-		StarSearch example1 = new StarSearch(graph);
-		assertEquals(1, example1.idealApproach());
+		StarSearch test1 = new StarSearch(graph);
+		assertEquals(1, test1.idealApproach());
 	}
 	
 	public Graph createGraph() {
