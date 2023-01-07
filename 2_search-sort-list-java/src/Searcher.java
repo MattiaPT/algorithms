@@ -37,7 +37,6 @@ public class Searcher {
 		int left = 0, expectation, right = array.length - 1;
 		while (left <= right) {
 			expectation = (int)((left + right) * ((double) (value - array[left]))/(array[right] - array[left]));
-			System.out.println(expectation);
 			if (array[expectation] == value)
 				return expectation;
 			if (array[expectation] < value)
@@ -51,6 +50,22 @@ public class Searcher {
 	
 	/* EXPONENTIAL SEARCH */
 	public int exponentialSearch(int value) {
-		return 0;
+		int left = 0, middle, right = 1;
+		while (array[right] < value && right != array.length - 1) {
+			left = right;
+			right = (right * 2 < array.length)? right * 2: array.length - 1;
+		}
+
+		while (left <= right) {
+			middle = (left + right) / 2;
+			if (array[middle] == value)
+				return middle;
+			if (array[middle] < value)
+				left = middle + 1;
+			else
+				right = middle - 1;
+		}
+		
+		return left;
 	}
 }

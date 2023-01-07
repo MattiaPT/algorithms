@@ -23,5 +23,9 @@ public class SearchTest {
 	
 	@Test
 	public void testExponentialSearch() {
+		Searcher test1 = new Searcher(new int[] {1, 6, 8, 11, 20, 42, 44, 45, 210});
+		Searcher test2 = new Searcher(new int[] {1, 6, 8, 11, 20, 42, 44, 45, 60});
+		assertEquals(6, test1.exponentialSearch(44));
+		assertEquals(8, test2.exponentialSearch(50));
 	}
 }
