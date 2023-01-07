@@ -31,4 +31,20 @@ public class Searcher {
 		
 		return left;
 	}
+	
+	/* INTERPOLATION SEARCH */
+	public int interpolationSearch(int value) {
+		int left = 0, expectation, right = array.length - 1;
+		while (left <= right) {
+			expectation = (value - array[left])/(array[right] - array[left]);
+			if (array[expectation] == value)
+				return expectation;
+			if (array[expectation] < value)
+				left = expectation + 1;
+			else
+				right = expectation - 1;
+		}
+		
+		return left;
+	}
 }

@@ -14,4 +14,10 @@ public class SearchTest {
 		Searcher test1 = new Searcher(new int[] {1, 6, 8, 11, 20, 42, 44, 45, 210});
 		assertEquals(6, test1.binarySearchit(44));
 	}
+	
+	@Test
+	public void testInterpolationSearch() {
+		Searcher test1 = new Searcher(new int[] {1, 6, 8, 11, 20, 42, 44, 45, 210});
+		assertEquals(6, test1.binarySearchit(44));
+	}
 }
