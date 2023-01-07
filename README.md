@@ -9,7 +9,6 @@ and playing around with algorithms learnt in the *algorithms & datastructures* l
 
 ## Searching & Sorting Algorithms (list)
 - Binary Search
-&nbsp;
 - Bubble Sort
 - Selection Sort
 - Insertion Sort
