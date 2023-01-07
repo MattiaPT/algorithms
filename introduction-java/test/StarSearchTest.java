@@ -22,6 +22,12 @@ public class StarSearchTest {
 		StarSearch example1 = new StarSearch(graph);
 		assertEquals(1, example1.naiveApproach());
 	}
+	@Test
+	public void testIdealApproach() {
+		Graph graph = createGraph();
+		StarSearch example1 = new StarSearch(graph);
+		assertEquals(1, example1.idealApproach());
+	}
 	
 	public Graph createGraph() {
 		/* 

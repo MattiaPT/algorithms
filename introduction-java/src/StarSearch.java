@@ -45,4 +45,43 @@ public class StarSearch {
 		}
 		return -1;
 	}
+
+	public int idealApproach() {
+		ArrayList<Node> nodes = graph.getNodes();
+		boolean[] sentOut = new boolean[nodes.size()];
+		int sentOutCounter = 0;
+		ArrayList<ArrayList<Node>> adjacencyList = graph.getAdjacencyList();
+		
+		// loop to exclude people from being a possible star
+		while (sentOutCounter != nodes.size() - 1) {
+			int a = -1, b = -1;
+			for (int i = 0; b == -1; i++) {
+				if (sentOut[i])
+					continue;
+				b = (a == -1)? -1: i;
+				a = (a == -1)? i: a;
+			}
+			if (adjacencyList.get(nodes.get(a).getIndex()).contains(nodes.get(b)))
+				sentOut[a] = true;
+			else
+				sentOut[b] = true;
+			sentOutCounter++;
+		}
+		
+		int index = -1;
+		for (int i = 0; i < sentOut.length; i++) {
+			if (!sentOut[i]) {
+				index = i;
+				break;
+			}
+		}
+		Node possibleStar = nodes.get(index);
+		
+		for (Node person : nodes) {
+			if (!adjacencyList.get(person.getIndex()).contains(possibleStar))
+				return -1;
+		}
+		
+		return index;
+	}
 }
