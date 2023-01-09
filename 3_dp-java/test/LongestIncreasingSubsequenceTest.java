@@ -15,4 +15,9 @@ public class LongestIncreasingSubsequenceTest {
 		LongestIncreasingSubsequence test1 = new LongestIncreasingSubsequence(new int[] {1, 4, 6, 3, 5, 7, 9, 8});
 		assertEquals(5, test1.calcLIS());
 	}
+	@Test
+	public void testOptimizedCalcLIS() {
+		LongestIncreasingSubsequence test1 = new LongestIncreasingSubsequence(new int[] {1, 4, 6, 3, 5, 7, 9, 8});
+		assertEquals(5, test1.optimizedCalcLIS());
+	}
 }

@@ -16,6 +16,7 @@ public class LongestIncreasingSubsequence {
 		this.array = array;
 	}
 	
+	/* calculate longest increasing subsequence (LIS) */
 	public int calcLIS() {
 		int[] DP_table = new int[array.length];
 		Arrays.fill(DP_table, -1);
@@ -32,5 +33,32 @@ arrayLoop:
 			}
 		}
 		return index;
+	}
+	
+	/* calculate longest increasing subsequence using binary search */
+	public int optimizedCalcLIS() {
+		int[] DP_table = new int[array.length];
+		Arrays.fill(DP_table, Integer.MAX_VALUE);
+		DP_table[0] = array[0];
+		int[] counter = new int[] {1};
+		for (int i = 1; i < array.length; i++)
+			DP_table[binarySearch(DP_table, array[i], counter)] = array[i];
+		return counter[0];
+	}
+	public int binarySearch(int[] array, int value, int[] counter) {
+		int left = 0, middle, right = array.length - 1;
+		while (left <= right) {
+			middle = (left + right) / 2;
+			if ((middle == 0 || array[middle - 1] <= value) &&
+					(middle == array.length - 1 || (array[middle + 1] >= value && array[middle] >= value))) {
+				counter[0] = counter[0] + ((middle == counter[0])? 1: 0);
+				return middle;
+			} else if (middle == 0 || array[middle - 1] <= value) {
+				left = middle + 1;
+			} else {
+				right = middle - 1;
+			}
+		}
+		return left;
 	}
 }

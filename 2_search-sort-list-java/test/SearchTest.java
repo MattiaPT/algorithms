@@ -1,6 +1,8 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
+import SearchAlgorithms.Searcher;
+
 /*
  * Author: Mattia
  * Date: 07.01.23
