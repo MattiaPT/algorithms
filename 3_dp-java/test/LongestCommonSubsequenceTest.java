@@ -1,4 +1,5 @@
-import java.util.Arrays;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
 
 /*
  * Author: Mattia
@@ -9,5 +10,9 @@ import java.util.Arrays;
  */
 
 public class LongestCommonSubsequenceTest {
-
+	@Test
+	public void testCalcLCS() {
+		LongestCommonSubsequence test1 = new LongestCommonSubsequence("TIGER", "ZIEGE");
+		assertEquals(3, test1.calcLCS());
+	}
 }

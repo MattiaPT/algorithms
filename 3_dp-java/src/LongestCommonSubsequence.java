@@ -1,4 +1,4 @@
-import java.util.Arrays;
+import java.lang.Math;
 
 /*
  * Author: Mattia
@@ -18,6 +18,16 @@ public class LongestCommonSubsequence {
 		this.string2 = string2;
 	}
 	
-	/* calculate longest common subsequence */
-	
+	/* calculate longest common subsequence (LCS) */
+	public int calcLCS() {
+		int[][] DP_table = new int[string2.length()][string1.length()];
+		for (int i = 0; i < string2.length(); i++) {
+			for (int j = 0; j < string1.length(); j++) {
+				DP_table[i][j] = Math.max(
+						Math.max((i == 0)? 0: DP_table[i-1][j], (j == 0)? 0: DP_table[i][j-1]),
+						(i == 0 || j == 0)? 0: DP_table[i-1][j-1] + ((string2.charAt(i) == string1.charAt(j))? 1: 0));
+			}
+		}
+		return DP_table[string2.length() - 1][string1.length() - 1];
+	}
 }
