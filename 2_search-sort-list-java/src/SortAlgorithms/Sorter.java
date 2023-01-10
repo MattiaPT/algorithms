@@ -33,10 +33,12 @@ public class Sorter {
 	
 	/* BUBBLESORT */
 	public void bubbleSort() {
-		for (int i = 0; i < array.length - 1; i++) {
-			if (array[i] <= array[i+1])
-				continue;
-			swap(i, i-- +1);
+		for (int j = 0; j < array.length; j++) {
+			for (int i = 0; i < array.length - 1; i++) {
+				if (array[i] <= array[i+1])
+					continue;
+				swap(i, i-- +1);
+			}
 		}
 	}
 	
@@ -131,7 +133,7 @@ public class Sorter {
 			merged[mergePointer++] = array[middlePointer++];
 		
 		for (int i = leftBound; i <= rightBound; i++)
-			array[i] = merged[i-rightBound];
+			array[i] = merged[i-leftBound];
 	}
 	
 	
@@ -144,6 +146,7 @@ public class Sorter {
 			int partitionPointer = getPartition(leftBound, rightBound);
 			quickSort(leftBound, partitionPointer - 1);
 			quickSort(partitionPointer + 1, rightBound);
+			merge(leftBound, partitionPointer, rightBound);
 		}
 	}
 	public int getPartition(int leftBound, int rightBound) {
