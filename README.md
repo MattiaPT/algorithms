@@ -22,6 +22,7 @@ and playing around with algorithms learnt in the *algorithms & datastructures* l
 ## DP Algorithms
 - Fibonacci
 - Longest Increasing Subsequence
+- Longest Common Subsequence
 
 ## Search Algorithms (graph)
 using an own implementation of Graphs

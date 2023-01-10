@@ -20,6 +20,8 @@ public class LongestCommonSubsequence {
 	
 	/* calculate longest common subsequence (LCS) */
 	public int calcLCS() {
+		if (string1.equals("") || string1 == null || string2.equals("") || string2 == null)
+			return 0;
 		int[][] DP_table = new int[string2.length()][string1.length()];
 		for (int i = 0; i < string2.length(); i++) {
 			for (int j = 0; j < string1.length(); j++) {
