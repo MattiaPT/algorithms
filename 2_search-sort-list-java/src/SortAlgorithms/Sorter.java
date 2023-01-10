@@ -146,21 +146,16 @@ public class Sorter {
 			int partitionPointer = getPartition(leftBound, rightBound);
 			quickSort(leftBound, partitionPointer - 1);
 			quickSort(partitionPointer + 1, rightBound);
-			merge(leftBound, partitionPointer, rightBound);
 		}
 	}
 	public int getPartition(int leftBound, int rightBound) {
-		int leftPointer = leftBound, rightPointer = rightBound - 1, pivotElement = array[rightBound];
-		do {
-			while (leftPointer < rightBound && array[rightPointer] <= pivotElement)
-				leftPointer++;
-			while (rightPointer > leftBound && array[rightPointer] > pivotElement)
-				rightPointer--;
-			if (leftPointer < rightPointer)
-				swap(leftPointer, rightPointer);
-		} while (leftPointer < rightPointer);
-		swap(leftPointer, rightBound);
-		return leftPointer;
+		int leftPointer = leftBound - 1, pivotElement = array[rightBound];
+		for (int j = leftBound; j <= rightBound - 1; j++) {
+			if (array[j] < pivotElement)
+				swap(++leftPointer, j);
+		}
+		swap(leftPointer + 1, rightBound);
+		return leftPointer + 1;
 	}
 	
 	

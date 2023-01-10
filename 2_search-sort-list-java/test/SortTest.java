@@ -75,7 +75,6 @@ public class SortTest {
 	public void testQuickSort() {
 		Sorter sorter = new Sorter(new int[] {124, 643, 1234, 34, 2, 4, 0, 12});
 		sorter.quickSort();
-		System.out.println(sorter);
 		assertEquals(true, sorter.isSorted());
 		
 		sorter.setArray(new int[] {12, 53, 2, 3, 5, 5, 2, 1, 2, 9});
