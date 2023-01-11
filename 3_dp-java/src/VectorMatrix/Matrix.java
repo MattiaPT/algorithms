@@ -9,8 +9,8 @@ package VectorMatrix;
 
 
 public class Matrix {
-	Dimension dimension;
-	int[][] data;
+	public Dimension dimension;
+	public int[][] data;
 	
 	/* CONSTRUCTORS */
 	public Matrix(int[][] data) {
