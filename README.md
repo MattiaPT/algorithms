@@ -25,7 +25,6 @@ and playing around with algorithms learnt in the *algorithms & datastructures* l
 - Longest Common Subsequence
 
 ## Search Algorithms (graph)
-using an own implementation of Graphs
 ### in unweighted graphs:
 - DFS: Test Reachability
 - BFS: Test Reachability, Shortest Path Algorithm
@@ -33,3 +32,7 @@ using an own implementation of Graphs
 ### in weighted graphs:
 - Dijkstra: Shortest Path Algorithm
 - Bellman Ford: Shortest Path Algorithm
+
+## Packages
+- VectorMatrix (providing a framework to work with vectors and matrices *in house*)
+- GraphTheory (providing a framework to work with graphs)
