@@ -23,6 +23,8 @@ and playing around with algorithms learnt in the *algorithms & datastructures* l
 - Fibonacci
 - Longest Increasing Subsequence
 - Longest Common Subsequence
+- *TODO:* Matrix Chain Multiplication
+- Subset Sum Problem
 
 ## Search Algorithms (graph)
 ### in unweighted graphs:
