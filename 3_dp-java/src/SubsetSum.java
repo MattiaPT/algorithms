@@ -1,4 +1,3 @@
-import java.util.Arrays;
 
 /*
  * Author: Mattia
@@ -9,15 +8,6 @@ import java.util.Arrays;
  */
 
 public class SubsetSum {
-	public static void main(String[] args) {
-		SubsetSum s = new SubsetSum(new int[] {12, 3, 9, 2, 1, 8, 5});
-		boolean[][] table = s.calcSubsetSum();
-		
-
-		
-		int[][] t = s.readSolution(table);
-	}
-	
 	int[] array;
 	
 	/* CONSTRUCTORS */
@@ -27,19 +17,19 @@ public class SubsetSum {
 	
 	public boolean[][] calcSubsetSum() {
 		int z = calcZ();
-		boolean[][] DP_table = new boolean[array.length][z];
+		boolean[][] DP_table = new boolean[array.length+1][z+1];
 		for (int j = 0; j < z; j++)
 			DP_table[0][j] = (j == 0);
-		for (int i = 1; i < array.length; i++) {
-			for (int j = 1; j < z; j++)
-				DP_table[i][j] = (j < array[i])? DP_table[i-1][j]: (DP_table[i-1][j] || DP_table[i-1][j-array[i]]);
+		for (int i = 1; i <= array.length; i++) {
+			for (int j = 1; j <= z; j++)
+				DP_table[i][j] = (j < array[i-1])? DP_table[i-1][j]: (DP_table[i-1][j] || DP_table[i-1][j-array[i-1]]);
 		}
 		return DP_table;
 	}
 	public int calcZ() {
 		double sum = 0;
 		for (int i = 0; i < array.length; i++)
-			sum += array[i]/2;
+			sum += array[i]/2.0;
 		return (int) sum;
 	}
 	
@@ -53,10 +43,8 @@ public class SubsetSum {
 		int pointer0 = 0, pointer1 = 0;
 		
 		int[] curr = new int[] {DP_table.length - 1, DP_table[0].length - 1};
-		for (int i = DP_table.length - 1; i >= 0; i--) {
-			if (curr[0] == 0 && curr[1] == 0)
-				break;
-			if (DP_table[curr[0]][curr[1]] == DP_table[curr[0] - 1][curr[1]]) {
+		for (int i = DP_table.length - 2; i >= 0; i--) {
+			if (DP_table[curr[0]][curr[1]] == DP_table[curr[0]-1][curr[1]]) {
 				split[0][pointer0++] = array[i];
 				curr[0]--;
 			} else {
