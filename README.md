@@ -37,4 +37,5 @@ and playing around with algorithms learnt in the *algorithms & datastructures* l
 
 ## Packages
 - VectorMatrix (providing a framework to work with vectors and matrices *in house*)
+  -> Strassen Algorithm
 - GraphTheory (providing a framework to work with graphs)
