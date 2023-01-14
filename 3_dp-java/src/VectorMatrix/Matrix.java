@@ -17,7 +17,7 @@ public class Matrix {
 	public Matrix(int[][] data) {
 		for (int i = 0; i < data.length - 1; i++) {
 			if (data[i].length != data[i+1].length)
-				throw new IllegalArgumentException();
+				throw new IllegalArgumentException("Faulty format of passed 2d array");
 		}
 		dimension = new Dimension(
 				data.length,
@@ -37,7 +37,7 @@ public class Matrix {
 	
 	public Vector multiply(Vector vector) {
 		if (this.dimension.cols != vector.dimension.rows)
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("Dimension of matrix and vector not matching");
 		int[] newData = new int[this.dimension.rows];
 		for (int i = 0; i < this.dimension.rows; i++) {
 			int sum = 0;
@@ -49,7 +49,7 @@ public class Matrix {
 	}
 	public Matrix multiply(Matrix other) {
 		if (this.dimension.cols != other.dimension.rows)
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("Dimensions of matrices not matching");
 		int[][] newData = new int[this.dimension.rows][other.dimension.cols];
 		for (int i = 0; i < this.dimension.rows; i++) {
 			for (int j = 0; j < other.dimension.cols; j++) {
@@ -61,11 +61,17 @@ public class Matrix {
 		}
 		return new Matrix(newData);
 	}
-	public Matrix strassenMultiply(Matrix other) {
+	public Matrix strassenMultiply(Matrix other) {		
 		if (this.dimension.rows == 1 && this.dimension.cols == 1)
 			return other.multiply(this.data[0][0]);
 		if (other.dimension.rows == 1 && other.dimension.cols == 1)
 			return this.multiply(other.data[0][0]);
+		
+		if (this.dimension.rows != this.dimension.cols ||
+				other.dimension.rows != other.dimension.cols ||
+				this.dimension.cols != other.dimension.rows ||
+				(this.dimension.rows & this.dimension.rows-1) != 0)
+			throw new IllegalArgumentException("Faulty matrices passed: same dimension and n = 2^k required");
 		
 		// submatrices
 		Matrix a = other.getSubmatrixEx(0, other.dimension.rows/2, 0, other.dimension.cols/2);
@@ -93,14 +99,12 @@ public class Matrix {
 				product5.add(product7),
 				product3.add(product6).subtract(product2).subtract(product5));
 		
-		System.out.println(product);
-		System.out.println("--------------------------");
 		return product;
 	}	
 	public Matrix add(Matrix other) {
 		if (this.dimension.cols != other.dimension.cols ||
 				this.dimension.rows != other.dimension.cols)
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("Dimensions of matrices not matching");
 		int[][] newData = new int[this.dimension.rows][this.dimension.cols];
 		for (int i = 0; i < this.dimension.rows; i++) {
 			for (int j = 0; j < this.dimension.cols; j++)
@@ -146,7 +150,7 @@ public class Matrix {
 				bottomLeftMatrix.dimension.rows != bottomRightMatrix.dimension.rows ||
 				topLeftMatrix.dimension.cols != bottomLeftMatrix.dimension.cols ||
 				topRightMatrix.dimension.cols != bottomRightMatrix.dimension.cols)
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("Dimensions of submatrices not matching");
 		int[][] newData = new int[topLeftMatrix.dimension.rows + bottomLeftMatrix.dimension.rows][topLeftMatrix.dimension.cols + topRightMatrix.dimension.cols];
 		for (int i = 0; i < topLeftMatrix.dimension.rows; i++) {
 			for (int j = 0; j < topLeftMatrix.dimension.cols; j++)
