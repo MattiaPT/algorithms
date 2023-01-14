@@ -17,13 +17,16 @@ public class TopologicalSorter {
 		Stack stack = new Stack();
 		
 		ArrayList<Node> nodes = graph.getNodes();
-		ArrayList<Edge> edges = graph.getEdges();
+		ArrayList<ArrayList<Edge>> edges = graph.getEdges();
 		
 		int[] order = new int[nodes.size()];
 		
 		int[] degIn = new int[nodes.size()];
-		for (Edge edge : edges)
-			degIn[edge.getEnd().getIndex()]++;
+		for (ArrayList<Edge> arr : edges) {
+			for (Edge edge : arr)
+				degIn[edge.getEnd().getIndex()]++;
+		}
+			
 		for (Node node : nodes) {
 			if (degIn[node.getIndex()] == 0)
 				stack.push(node);
@@ -33,9 +36,7 @@ public class TopologicalSorter {
 		while (!stack.isEmpty()) {
 			Node v = (Node) stack.pop();
 			order[v.getIndex()] = i++;
-			for (Edge edge : edges) {
-				if (!edge.getStart().equals(v))
-					continue;
+			for (Edge edge : edges.get(v.getIndex())) {
 				degIn[edge.getEnd().getIndex()]--;
 				if (degIn[edge.getEnd().getIndex()] == 0)
 					stack.push(edge.getEnd());
