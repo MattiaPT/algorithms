@@ -17,14 +17,14 @@ public class TopologicalSorter {
 		Stack stack = new Stack();
 		
 		ArrayList<Node> nodes = graph.getNodes();
-		ArrayList<ArrayList<Edge>> edges = graph.getEdges();
+		ArrayList<ArrayList<Node>> adjacencyList = graph.getAdjacencyList();
 		
 		int[] order = new int[nodes.size()];
 		
 		int[] degIn = new int[nodes.size()];
-		for (ArrayList<Edge> arr : edges) {
-			for (Edge edge : arr)
-				degIn[edge.getEnd().getIndex()]++;
+		for (ArrayList<Node> arr : adjacencyList) {
+			for (Node node : arr)
+				degIn[node.getIndex()]++;
 		}
 			
 		for (Node node : nodes) {
@@ -36,11 +36,12 @@ public class TopologicalSorter {
 		while (!stack.isEmpty()) {
 			Node v = (Node) stack.pop();
 			order[v.getIndex()] = i++;
-			for (Edge edge : edges.get(v.getIndex())) {
-				degIn[edge.getEnd().getIndex()]--;
-				if (degIn[edge.getEnd().getIndex()] == 0)
-					stack.push(edge.getEnd());
+			for (Node node : adjacencyList.get(v.getIndex())) {
+				degIn[node.getIndex()]--;
+				if (degIn[node.getIndex()] == 0)
+					stack.push(node);
 			}
+			adjacencyList.set(v.getIndex(), new ArrayList<Node>());
 		}
 		
 		return order;

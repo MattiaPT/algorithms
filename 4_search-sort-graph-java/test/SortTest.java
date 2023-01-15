@@ -1,7 +1,6 @@
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.Assert;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import org.junit.Test;
 
@@ -14,7 +13,8 @@ public class SortTest {
 	@Test
 	public void testGetTopologicalOrdering() {
 		TopologicalSorter test1 = new TopologicalSorter(createGraph());
-		System.out.println(Arrays.toString(test1.getTopologicalOrdering()));
+		int[] solution = new int[] {0, 3, 1, 2, 4};
+		Assert.assertArrayEquals(solution, test1.getTopologicalOrdering());
 	}
 	
 	public Graph createGraph() {
@@ -49,7 +49,6 @@ public class SortTest {
 		node_2_adj.add(node_3);
 		node_3_adj.add(node_4);
 		node_3_adj.add(node_1);
-		node_4_adj.add(node_2);
 		adjacencyList.add(node_0_adj);
 		adjacencyList.add(node_1_adj);
 		adjacencyList.add(node_2_adj);
@@ -60,7 +59,7 @@ public class SortTest {
 		edges.add(new ArrayList<>());
 		edges.get(0).add(new Edge<Integer>(node_0, node_0, 0));
 		edges.get(0).add(new Edge<Integer>(node_0, node_1, 4));
-		edges.get(0).add(new Edge<Integer>(node_0, node_2, 0));
+		edges.get(0).add(new Edge<Integer>(node_0, node_2, 2));
 		edges.get(0).add(new Edge<Integer>(node_0, node_3, 1));
 		edges.get(0).add(new Edge<Integer>(node_0, node_4, 0));
 		edges.add(new ArrayList<>());
@@ -84,10 +83,10 @@ public class SortTest {
 		edges.add(new ArrayList<>());
 		edges.get(4).add(new Edge<Integer>(node_4, node_0, 0));
 		edges.get(4).add(new Edge<Integer>(node_4, node_1, 0));
-		edges.get(4).add(new Edge<Integer>(node_4, node_2, 3));
+		edges.get(4).add(new Edge<Integer>(node_4, node_2, 0));
 		edges.get(4).add(new Edge<Integer>(node_4, node_3, 0));
 		edges.get(4).add(new Edge<Integer>(node_4, node_4, 0));
-				
-		return new Graph(nodes, adjacencyList, edges, node_0, node_4);
+		
+		return new Graph(nodes, adjacencyList, edges);
 	}
 }
