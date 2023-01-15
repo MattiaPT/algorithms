@@ -27,6 +27,8 @@ and playing around with algorithms learnt in the *algorithms & datastructures* l
 - Subset Sum Problem
 
 ## Search & Sort Algorithms (graph)
+- Topological Sort
+<br/><br/>
 #### in unweighted graphs:
 - DFS: Test Reachability
 - BFS: Test Reachability, Shortest Path Algorithm
@@ -34,8 +36,6 @@ and playing around with algorithms learnt in the *algorithms & datastructures* l
 #### in weighted graphs:
 - Dijkstra: Shortest Path Algorithm
 - Bellman Ford: Shortest Path Algorithm
-<br/><br/>
-- Topological Sort
 
 ## Packages
 - VectorMatrix (providing a framework to work with vectors and matrices *in house*)
