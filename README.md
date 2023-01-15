@@ -37,6 +37,6 @@ and playing around with algorithms learnt in the *algorithms & datastructures* l
 - Bellman Ford: Shortest Path Algorithm
 
 ## Packages
-- VectorMatrix (providing a framework to work with vectors and matrices *in house*)
+- VectorMatrix (providing a framework to work with vectors and matrices *in house*)  
   -> Strassen Algorithm
 - GraphTheory (providing a framework to work with graphs)
