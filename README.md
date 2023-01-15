@@ -28,7 +28,6 @@ and playing around with algorithms learnt in the *algorithms & datastructures* l
 
 ## Search & Sort Algorithms (graph)
 - Topological Sort
-<br/><br/>
 #### in unweighted graphs:
 - DFS: Test Reachability
 - BFS: Test Reachability, Shortest Path Algorithm
