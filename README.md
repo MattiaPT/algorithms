@@ -7,7 +7,7 @@ and playing around with algorithms learnt in the *algorithms & datastructures* l
 - Star Search (using graphs)
 - Maximum Subarray Sum
 
-## Searching & Sorting Algorithms (list)
+## Search & Sort Algorithms (list)
 - Binary Search
 - Interpolation Search
 - Exponential Search
@@ -26,14 +26,16 @@ and playing around with algorithms learnt in the *algorithms & datastructures* l
 - *TODO:* Matrix Chain Multiplication
 - Subset Sum Problem
 
-## Search Algorithms (graph)
-### in unweighted graphs:
+## Search & Sort Algorithms (graph)
+#### in unweighted graphs:
 - DFS: Test Reachability
 - BFS: Test Reachability, Shortest Path Algorithm
 
-### in weighted graphs:
+#### in weighted graphs:
 - Dijkstra: Shortest Path Algorithm
 - Bellman Ford: Shortest Path Algorithm
+<br/><br/>
+- Topological Sort
 
 ## Packages
 - VectorMatrix (providing a framework to work with vectors and matrices *in house*)
