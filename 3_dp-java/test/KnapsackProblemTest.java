@@ -2,6 +2,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
+import java.util.Map;
+import java.util.HashMap;
 
 /*
  * Author: Mattia
@@ -13,10 +15,19 @@ import java.util.Arrays;
 public class KnapsackProblemTest {
 	@Test
 	public void testdpAlgorithm() {
-		KnapsackProblem test1 = new KnapsackProblem(new int[] {100, 1, 50, 50}, new int[] {101, 90, 5, 5}, 100);
-		int[][] dp = test1.dpAlgorithm();
-		for (int[] arr : dp)
-			System.out.println(Arrays.toString(arr));
-		// solution should be 101
+		KnapsackProblem test1 = new KnapsackProblem(new int[] {100, 1, 59, 41}, new int[] {102, 90, 5, 5}, 101);
+		int[][] dp1 = test1.dpAlgorithm();
+		assertEquals(101, test1.readSolution(dp1));
+		Map<Integer, Integer> solution = new HashMap<>();
+		solution.put(1, 90);
+		solution.put(41, 5);
+		solution.put(59, 5);
+		assertEquals(true, solution.equals(test1.backtrackSolution(dp1)));
+		System.out.println(test1.backtrackSolution(dp1));
+
+		KnapsackProblem test2 = new KnapsackProblem(new int[] {100, 1, 59, 41}, new int[] {101, 90, 5, 5}, 100);
+		int[][] dp2 = test2.dpAlgorithm();
+		assertEquals(101, test2.readSolution(dp2));
+		assertEquals(true, solution.equals(test1.backtrackSolution(dp2)));
 	}
 }
