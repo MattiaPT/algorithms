@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.lang.Math;
 
 /*
  * Author: Mattia
@@ -12,28 +13,30 @@ public class KnapsackProblem {
 	private int[] values;
 	private int[] weights;
 	
-	private int totalWeight;
+	private int weightBound;
 	
 	/* CONSTRUCTORS */
-	public KnapsackProblem(int[] values, int[] weights) {
+	public KnapsackProblem(int[] values, int[] weights, int weightBound) {
 		this.values = values;
 		this.weights = weights;
-		calcTotalWeight();
+		this.weightBound = weightBound;
 	}
 	
-	public int[] dpAlgorithm() {
-		/* TODO */
-		return null;
+	public int[][] dpAlgorithm() {
+		int[][] DP_table = new int[values.length+1][weightBound+1];
+		for (int i = 0; i < values.length; i++) {
+			for (int j = 0; j < weightBound; j++) {
+				DP_table[i][j] = (i == 0)? 0: ((weights[i] > weightBound)? DP_table[i-1][j]:
+					Math.max(DP_table[i-1][j], DP_table[i-1][weightBound-j] + values[i]));
+			}
+		}
+		
+		return DP_table;
 	}
 	
 	/* HELPER METHODS */
-	public void calcTotalWeight() {
-		totalWeight = 0;
-		for (int i = 0; i < weights.length; i++)
-			totalWeight += weights[i];
-	}
 	public String toString() {
 		return Arrays.toString(values) + 
-				"\n" + Arrays.toString(weights) + " (total: " + totalWeight + ")";
+				"\n" + Arrays.toString(weights) + " (bound: " + weightBound + ")";
 	}
 }
