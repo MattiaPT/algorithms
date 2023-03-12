@@ -1,5 +1,5 @@
 This is the repository, where I will be implementing
-and playing around with algorithms learnt in the *algorithms & datastructures / probability* lectures.
+and playing around with algorithms learnt in the *algorithms & datastructures* and *algorithms & probability* lectures.
 
 ## Introduction Algorithms
 - Karatsuba and Ofman
